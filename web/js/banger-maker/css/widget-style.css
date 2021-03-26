@@ -1,0 +1,107 @@
+*{
+    margin:0;
+    padding:0;
+}
+#playground{
+    padding: 5px ;
+    max-width:90vw;
+    max-height:90vh;
+    overflow-y:scroll;
+    overflow-x: scroll;
+    margin-left : 50px;
+    margin-right: 50px;
+    background: #1b1b28;
+    flex-direction: column;
+}
+#toolcontainer{
+    max-width:90vw;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 5px;
+
+}
+
+button{
+    margin-left: 5px;
+    padding: 2px;
+    font-size: large;
+}
+
+.note-container{
+
+    min-width:90vw;
+    white-space: nowrap;
+    display:inline-flex;
+
+    font-size: 0 ;
+}
+.timeItem{
+    background: #151d32;
+    width:9px;
+    height:14px;
+}
+.noire{
+    border-left: solid #344254 1px;
+    box-sizing: border-box;
+
+}
+#indexes{
+    min-width:90vw;
+    white-space: nowrap;
+    background: #151d32;
+    display:inline-flex;
+    border-bottom: #344254 solid 1px ;
+    box-sizing: border-box;
+}
+
+.noteItem{
+    background: #151d32;
+    color: #ECA1BD;
+    border-bottom: #344254 solid 1px;
+    box-sizing: border-box;
+    width: 40px;
+    font-size: 13px;
+    height: 14px;
+    padding-left: 3px;
+}
+
+.indexItem{
+    color: #ECA1BD;
+    width:9px;
+    font-size: 14px;
+    height:17px;
+    overflow:visible;
+}
+
+.played{
+    background: #9CC7F7 !important;
+}
+
+.buttons{
+    background: white;
+}
+.selected{
+    background: dimgray;
+}
+
+.off{
+    background: dimgray;
+}
+
+.tileNoire{
+    background: #0e1321;
+}
+.firstTableItem{
+    background: #0e1321;
+    color: #ffffff;
+    width:40px;
+    font-size: 14px;
+    height:12px;
+}
+.endnote{
+    border-right: solid 3px;
+    box-sizing: border-box;
+}
+.invisible-button{
+    display:none;
+}

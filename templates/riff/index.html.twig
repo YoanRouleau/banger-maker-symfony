@@ -7,7 +7,10 @@
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
-
+    <script src="/js/banger-maker/package/node_modules/tone/build/Tone.js"></script>
+    <script type="module" src="/js/banger-maker/widget2.js"></script>
+    <div id="playgroundcontainer">
+    </div>
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
 
@@ -17,4 +20,21 @@
         <li>Your template at <code><a href="{{ 'C:/Users/Windows 10/PhpstormProjects/Banger-Maker-symfony/banger_maker_symfony/templates/riff/index.html.twig'|file_link(0) }}">templates/riff/index.html.twig</a></code></li>
     </ul>
 </div>
+
+    {% for riff in riffs %}
+        {{ riff.name }}
+        <button class="playsong" value="{{ riff.customsongfile }}">Play</button>
+    {% endfor %}
+    <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+            let playbuttons = document.querySelectorAll('.playsong')
+            playbuttons.forEach((e)=>{
+                e.addEventListener("click",()=>{
+                    window.songtoplay = JSON.parse(e.value)
+                    document.getElementById("invisible-button-play").click()
+
+                })
+            })
+        })
+    </script>
 {% endblock %}
