@@ -8,6 +8,7 @@ let lastReleasedContent = -1
 let toolStickToTime = true
 let tempo = 180
 window.instrument = 1;
+window.sampler = getSampler();
 window.songtoplay={
     "tempo" : tempo,
     "riff"  : [],
@@ -17,7 +18,7 @@ window.song = {
     "tempo" : tempo,
     "riff"  : createSongContainer(256),
 }
-window.sampler = getSampler();
+
 document.addEventListener("DOMContentLoaded", () => {
     addCss()
     const playgroundContainer =  document.getElementById("playgroundcontainer")
@@ -155,7 +156,7 @@ function createToolContainer(container){
     const buttonchangeinstrumentinvisible = _("button",toolcontainer,{id:"invisible-button-instr",classes:"invisible-button"})
     buttonchangeinstrumentinvisible.addEventListener("click",() => {
         window.sampler = getSampler();
-        print("instr changed")
+
     })
 
 }
@@ -165,10 +166,9 @@ function createToolContainer(container){
  * @param customfile
  * @param instrument
  */
-
 function playmusic(instrument){
 
-    let synth = instrument
+    let synth = window.sampler
     let now = Tone.now()
     let tempo = window.song["tempo"]
     let interval = 60/tempo/8
@@ -206,9 +206,7 @@ function playmusic(instrument){
  * @param customfile
  */
 function playWithInstrument(){
-    const synth = window.sampler
-    playmusic(synth)
-    console.log("yo")
+    playmusic(window.sampler)
 }
 
 
@@ -357,7 +355,6 @@ function getSampler() {
  */
 function playnote(synth,note,starttime){
     synth.triggerAttack(note, starttime)
-
 }
 
 /**
@@ -391,7 +388,7 @@ function createSongContainer(length){
  */
 function createPlayground(length,keynotes){
 
-    let previewsynth =window.sampler
+
     let playground = document.querySelector("#playground")
     let indexes = document.querySelector("#indexes")
     //ajout des indexes (en haut )
@@ -429,7 +426,7 @@ function createPlayground(length,keynotes){
                      lastClickedContent = [keynotes[note],i]
 
 
-                     previewsynth.triggerAttackRelease(keynotes[note],"8n")
+                    window.sampler.triggerAttackRelease(keynotes[note],"8n")
                 }
                 else if (e.button == 2){
                      removeNote(keynotes[note],i)

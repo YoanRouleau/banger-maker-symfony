@@ -23,15 +23,20 @@
 
     {% for riff in riffs %}
         {{ riff.name }}
-        <button class="playsong" value="{{ riff.customsongfile }}">Play</button>
+
+        <button class="playsong" value="{{ riff.customsongfile }}!{{ riff.getInstrument.Id }}">Play</button>
     {% endfor %}
     <script>
         document.addEventListener("DOMContentLoaded",()=>{
             let playbuttons = document.querySelectorAll('.playsong')
             playbuttons.forEach((e)=>{
                 e.addEventListener("click",()=>{
-                    window.songtoplay = JSON.parse(e.value)
-                    document.getElementById("invisible-button-play").click()
+                    window.songtoplay = JSON.parse(e.value.split("!")[0])
+                    window.instrument = e.value.split("!")[1]
+                    console.log(e.value.split("!")[1])
+                    document.getElementById("invisible-button-instr").click()
+
+                    setTimeout(()=>{document.getElementById("invisible-button-play").click()}, 100);
 
                 })
             })

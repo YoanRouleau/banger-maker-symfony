@@ -16,6 +16,8 @@ window.song = {
     "tempo" : tempo,
     "riff"  : createSongContainer(256),
 }
+window.instrument = 1;
+window.sampler = getSampler();
 
 document.addEventListener("DOMContentLoaded", () => {
     addCss()
@@ -69,6 +71,11 @@ function createToolContainer(container){
     buttonplayinvisible.addEventListener("click",() => {
         playSongWithInstrument()
     })
+    const buttonchangeinstrumentinvisible = _("button",toolcontainer,{id:"invisible-button-instr",classes:"invisible-button"})
+    buttonchangeinstrumentinvisible.addEventListener("click",() => {
+        window.sampler = getSampler();
+
+    })
 
 }
 
@@ -80,7 +87,7 @@ function createToolContainer(container){
 
 function playmusic(instrument){
 
-    let synth = instrument
+    let synth = window.sampler
     let now = Tone.now()
     let tempo = window.song["tempo"]
     let interval = 60/tempo/8
@@ -113,19 +120,154 @@ function playmusic(instrument){
     }
 }
 
+
+function playWithInstrument(){
+    playmusic(window.sampler)
+}
+
+function getSampler() {
+    if (window.instrument==1) {
+        //piano
+        return new Tone.Sampler({
+            urls: {
+                C1: "pianoC1.mp3",
+                C2: "pianoC2.mp3",
+                C3: "pianoC3.mp3",
+                C4: "pianoC4.mp3",
+            },
+            baseUrl: "../samples/piano/",
+            onload: () => {
+
+                //sampler.triggerAttack(["C1", "E1", "G1", "B1"],1);
+            }
+        }).toDestination();
+    } else if (window.instrument==2) {
+        return new Tone.Sampler({
+            urls: {
+                C1: "brassC1.mp3",
+                C2: "brassC2.mp3",
+                C3: "brassC3.mp3",
+                C4: "brassC4.mp3",
+            },
+            baseUrl: "../samples/brass/",
+            onload: () => {
+
+                //sampler.triggerAttack(["C1", "E1", "G1", "B1"],1);
+            }
+        }).toDestination();
+    } else if (window.instrument==3) {
+        return new Tone.Sampler({
+            urls: {
+                C1: "epianoC1.mp3",
+                C2: "epianoC2.mp3",
+                C3: "epianoC3.mp3",
+                C4: "epianoC4.mp3",
+            },
+            baseUrl: "../samples/epiano/",
+            onload: () => {
+
+                //sampler.triggerAttack(["C1", "E1", "G1", "B1"],1);
+            }
+        }).toDestination();
+    } else if (window.instrument==4) {
+        return new Tone.Sampler({
+            urls: {
+                C1: "synth1C1.mp3",
+                C2: "synth1C2.mp3",
+                C3: "synth1C3.mp3",
+                C4: "synth1C4.mp3",
+            },
+            baseUrl: "../samples/synth1/",
+            onload: () => {
+
+                //sampler.triggerAttack(["C1", "E1", "G1", "B1"],1);
+            }
+        }).toDestination();
+    } else if (window.instrument==5) {
+        return new Tone.Sampler({
+            urls: {
+                C1: "synth2C1.mp3",
+                C2: "synth2C2.mp3",
+                C3: "synth2C3.mp3",
+                C4: "synth2C4.mp3",
+            },
+            baseUrl: "../samples/synth2/",
+            onload: () => {
+
+                //sampler.triggerAttack(["C1", "E1", "G1", "B1"],1);
+            }
+        }).toDestination();
+
+    } else if (window.instrument==6) {
+        return new Tone.Sampler({
+            urls: {
+                C1: "synthbassC1.mp3",
+                C2: "synthbassC2.mp3",
+                C3: "synthbassC3.mp3",
+                C4: "synthbassC4.mp3",
+            },
+            baseUrl: "../samples/synthbass/",
+            onload: () => {
+
+                //sampler.triggerAttack(["C1", "E1", "G1", "B1"],1);
+            }
+        }).toDestination();
+    }
+    else if (window.instrument==7) {
+        return new Tone.Sampler({
+            urls: {
+                C1: "violonsPizC1.mp3",
+                C2: "violonsPizC2.mp3",
+                C3: "violonsPizC3.mp3",
+                C4: "violonsPizC4.mp3",
+            },
+            baseUrl: "../samples/violonsPiz/",
+            onload: () => {
+
+                //sampler.triggerAttack(["C1", "E1", "G1", "B1"],1);
+            }
+        }).toDestination();
+    }
+    else if (window.instrument==8) {
+        return new Tone.Sampler({
+            urls: {
+                C1: "violonsC1.mp3",
+                C2: "violonsC2.mp3",
+                C3: "violonsC3.mp3",
+                C4: "violonsC4.mp3",
+            },
+            baseUrl: "../samples/violons/",
+            onload: () => {
+
+                //sampler.triggerAttack(["C1", "E1", "G1", "B1"],1);
+            }
+        }).toDestination();
+    }
+    else if (window.instrument==9) {
+        return new Tone.Sampler({
+            urls: {
+                C2: "xyloC2.mp3",
+                C3: "xyloC3.mp3",
+                C4: "xyloC4.mp3",
+                C5: "xyloC5.mp3",
+
+            },
+            baseUrl: "../samples/xylo/",
+            onload: () => {
+
+                //sampler.triggerAttack(["C1", "E1", "G1", "B1"],1);
+            }
+        }).toDestination();
+    }
+}
 /**
  *
  * @param customfile
  */
-function playWithInstrument(){
-    const dist = new Tone.Distortion(0.8).toDestination();
-    const synth = new Tone.PolySynth(Tone.Synth).connect(dist).toDestination();
-    playmusic(synth)
-}
+
 export function playSongWithInstrument(){
     song = window.songtoplay
-    const dist = new Tone.Distortion(0.8).toDestination();
-    const synth = new Tone.PolySynth(Tone.Synth).connect(dist).toDestination();
+    const synth = window.sampler
 
     let now = Tone.now()
     let tempo = song["tempo"]
