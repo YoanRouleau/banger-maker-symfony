@@ -15,38 +15,42 @@
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
     </head>
-    <header>
-    </header>
     <body>
 
 
     <section class="content">
             <section class="content_left">
-
                 <section class="navigation" style="height: 270px;">
-
                     <!-- Main -->
-                    <div class="navigation__list">
 
+                    <div class="navigation__list">
+                        <div class="navigation__list__header__title" >
+                           Gang-Band
+                        </div>
                         <div class="navigation__list__header" role="button" data-toggle="collapse" href="#main" aria-expanded="true" aria-controls="main">
-                            Main
+                            Main <i class='fa fa-angle-down'></i>
                         </div>
 
                         <div class="collapse in" id="main">
 
-                            <a href="#" class="navigation__list__item">
-                                <i class='fab fa-500px'></i>
-                                <span>Browse</span>
+                            <a href="/" class="navigation__list__item">
+                                <i class="fa fa-home"></i>
+                                <span>Home</span>
                             </a>
 
-                            <a href="#" class="navigation__list__item">
-                                <i class='fab fa-500px'></i>
-                                <span>Activity</span>
+                            <a href="/riff/add" class="navigation__list__item">
+                                <i class="fa fa-plus"></i>
+                                <span>Create</span>
                             </a>
 
-                            <a href="#" class="navigation__list__item">
-                                <i class='fab fa-500px'></i>
-                                <span>Radio</span>
+                            <a href="/instrument" class="navigation__list__item">
+                                <i class='fas fa-guitar'></i>
+                                <span>Instruments</span>
+                            </a>
+
+                            <a href="/categorie" class="navigation__list__item">
+                                <i class="fas fa-bookmark"></i>
+                                <span>Categories</span>
                             </a>
 
                         </div>
