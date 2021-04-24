@@ -12,11 +12,12 @@ a{
 }
 
 .content_left{
-    width: 20%;
-    height: 100%;
+    width: 15%;
+    height: 100vh;
     font-size: 1.0em;
     line-height: 1.42857143;
     color: #333;
+    background-color: rgba(0, 0, 0, 0.66);
 }
 .content{
     display: flex;
@@ -30,6 +31,9 @@ a{
     font-size: 1em;
 }
 
+.navigation__list__item:hover{
+    color: #ffffff;
+}
 .navigation__list__item{
     color: #aaaaaa;
     padding: 3px 0;
