@@ -67,13 +67,25 @@ path{
 /* -- RIFF -- */
 .riff-head{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: flex-start;
     align-items: flex-start;
     height: 200px;
     margin: 0;
-    padding: 20px 50px;
-    background: linear-gradient(180deg, rgba(61,61,61,1) 0%, rgba(0,0,0,0) 100%);
+    padding: 40px 50px;
+    background: linear-gradient(0deg, rgba(24,24,24,1) 0%, rgba(0,0,0,0) 100%), url("../img/riff-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.riff-image-tiles{
+    margin-right: 40px;
+}
+
+.riff-image-tiles img{
+    height: 50%;
+    width: 50%;
 }
 
 .riff-head h1{
@@ -86,6 +98,13 @@ path{
     letter-spacing: 3px;
     font-size: 0.7em;
     padding-bottom: 5px;
+}
+
+.riff-head-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
 .riff-body{
@@ -164,10 +183,7 @@ tbody tr:hover .riff-table-play{
     cursor: pointer;
 }
 
-.riff-image-tiles img{
-    height: 50%;
-    width: 50%;
-}
+
 
 
 
