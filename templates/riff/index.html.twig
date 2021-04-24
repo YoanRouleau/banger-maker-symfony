@@ -31,10 +31,6 @@
     </div>
 </div>
 <div class="riff-body">
-    {#{% for riff in riffs %}
-        {{ riff.name }}
-        <button class="playsong" value="{{ riff.customsongfile }}!{{ riff.getInstrument.Id }}">Play</button>
-    {% endfor %}#}
     <table class="riff-table">
         <thead>
             <tr>
@@ -42,6 +38,7 @@
                 <th>Nom</th>
                 <th>Instrument</th>
                 <th>Description</th>
+                <th>Auteur <i class="fas fa-male"></i></th>
             </tr>
         </thead>
         <tbody>
@@ -50,9 +47,10 @@
                     <td class="riff-table-play" style="width: 5%">
                         <button class="playsong" value="{{ riff.customsongfile }}!{{ riff.getInstrument.Id }}">▶</button>
                     </td>
-                    <td style="width: 25%">{{ riff.name }}</td>
-                    <td style="width: 15%">{{ riff.instrument.name }}</td>
-                    <td style="width: 55%">{{ riff.decription }}</td>
+                    <td style="width: 25%"><p>{{ riff.name }}</p></td>
+                    <td style="width: 15%"><p>{{ riff.instrument.name }}</p></td>
+                    <td class="riff-table-description" style="width: 30%"><p>{{ riff.decription }}</p></td>
+                    <td style="width: 15%"><p>{{ riff.author.username }}</p></td>
                 </tr>
             {% endfor %}
         </tbody>

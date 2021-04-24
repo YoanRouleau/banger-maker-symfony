@@ -9,7 +9,6 @@ body{background: #181818; font-family: "Roboto", sans-serif;}
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    width: 100%;
     height: 200px;
     margin: 0;
     padding: 20px 50px;
@@ -21,11 +20,14 @@ body{background: #181818; font-family: "Roboto", sans-serif;}
 }
 .riff-head h2{
     color: white;
-    font-size: 2.5em;
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 0.7em;
     padding-bottom: 5px;
+}
+
+.riff-body{
+    padding: 0 50px;
 }
 
 .riff-image-tiles{
@@ -39,6 +41,7 @@ body{background: #181818; font-family: "Roboto", sans-serif;}
 .riff-table{
     width: 100%;
     color: white;
+    border-collapse: collapse;
 }
 
 .riff-table thead tr th{
@@ -50,16 +53,28 @@ body{background: #181818; font-family: "Roboto", sans-serif;}
     font-weight: lighter;
     letter-spacing: 4px;
     color: #cbcbcb;
-    font-size: 0.7em;
+    font-size: 0.7vw;
+}
+.riff-table tbody tr{
+    border-top: solid 0.5px #7a7a7a;
+}
+.riff-table tbody td{
+    padding: 14px 0;
+}
+.riff-table tbody td p{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .riff-table-play{
-    text-align: center;
+    text-align: left;
     opacity: 0;
-    visibility: hidden;
     transition: all 0.2s ease-in-out;
     transform: translateX(-5px);
 }
+
 
 tbody tr:hover .riff-table-play{
     opacity: 1;
@@ -77,6 +92,10 @@ tbody tr:hover .riff-table-play{
     background-color: unset;
     outline: none;
     border: none;
+}
+
+.riff-table .playsong:hover{
+    cursor: pointer;
 }
 
 .riff-image-tiles img{
