@@ -9,10 +9,7 @@ let toolStickToTime = true
 let tempo = 180
 window.instrument = 1;
 window.sampler = getSampler();
-window.songtoplay={
-    "tempo" : tempo,
-    "riff"  : [],
-}
+window.songtoplay={  "tempo" : tempo, "riff"  : []}
 window.toolsize = 4 //can be 8 , 4 , 2 ,1
 window.song = {
     "tempo" : tempo,
@@ -35,15 +32,21 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function resetPlayground(){
-    const elements = document.getElementsByClassName('played')
+    var elements = document.getElementsByClassName('played')
 
     while(elements.length>0) {
-        console.log(elements.length)
-        console.log(elements[0])
         elements[0].classList.remove('played')
 
+
     }
-    //TODO length as variable
+    var elements = document.getElementsByClassName('endnote')
+
+    while(elements.length>0) {
+        elements[0].classList.remove('endnote')
+
+
+    }
+
     window.song["riff"]=createSongContainer(256)
 
 }
@@ -62,12 +65,6 @@ function addCss(){
     document.body.appendChild(link);
 }
 
-/**
- *
- * @param customsongfile
- * @param tempo
- * @param song
- */
 function replaySong() {
     if (document.getElementById("play-loop").classList.contains("on")) {
         setTimeout(function () {
@@ -79,10 +76,6 @@ function replaySong() {
     }
 }
 
-/**
- *
- * @param container
- */
 function createToolContainer(container){
     const toolcontainer = _("div",container,{id: "toolcontainer"})
     const buttontempo8 = _("button",toolcontainer,{text:"○",id:"tempo8-button",classes:"buttons"})
@@ -126,33 +119,33 @@ function createToolContainer(container){
     })
     const playbutton = _("button",toolcontainer,{text:"Play once",id:"play-button"})
     const resetbutton = _("button",toolcontainer,{text:"Reset",id:"reset-button"})
-    const loopbutton = _("button",toolcontainer,{text:"Loop song",id:"play-loop",classes:"off"})
+    // const loopbutton = _("button",toolcontainer,{text:"Loop song",id:"play-loop",classes:"off"})
     _("label",toolcontainer,{text:" Tempo : "})
     const tempoinput = _("input",toolcontainer,{value:"180",type:"number",id:"quantity",name:"quantity",min:"40",max:"280"})
     tempoinput.addEventListener("change",(e) => {
         window.song["tempo"] = tempoinput.value
     })
     playbutton.addEventListener("click",() => {
-        if (document.getElementById("play-loop").classList.contains("off")) {
+        //if (document.getElementById("play-loop").classList.contains("off")) {
 
 
             playWithInstrument()
-        }
+        //}
     })
     resetbutton.addEventListener("click",() => {
             resetPlayground()
 
     })
 
-    loopbutton.addEventListener("click",() => {
-        if (document.getElementById("play-loop").classList.contains("on")) {
-            document.getElementById("play-loop").classList = "off"
-        }
-        else {
-            document.getElementById("play-loop").classList = "on"
-            replaySong(tempo,song)
-        }
-    })
+    // loopbutton.addEventListener("click",() => {
+    //     if (document.getElementById("play-loop").classList.contains("on")) {
+    //         document.getElementById("play-loop").classList = "off"
+    //     }
+    //     else {
+    //         document.getElementById("play-loop").classList = "on"
+    //         replaySong(tempo,song)
+    //     }
+    // })
     const buttonchangeinstrumentinvisible = _("button",toolcontainer,{id:"invisible-button-instr",classes:"invisible-button"})
     buttonchangeinstrumentinvisible.addEventListener("click",() => {
         window.sampler = getSampler();
@@ -161,11 +154,6 @@ function createToolContainer(container){
 
 }
 
-/**
- *
- * @param customfile
- * @param instrument
- */
 function playmusic(instrument){
 
     let synth = window.sampler
@@ -201,16 +189,9 @@ function playmusic(instrument){
     }
 }
 
-/**
- *
- * @param customfile
- */
 function playWithInstrument(){
     playmusic(window.sampler)
 }
-
-
-
 
 function getSampler() {
     if (window.instrument==1) {
@@ -347,32 +328,16 @@ function getSampler() {
         }).toDestination();
     }
 }
-/**
- *
- * @param synth
- * @param note
- * @param starttime
- */
+
 function playnote(synth,note,starttime){
     synth.triggerAttack(note, starttime)
 }
 
-/**
- *
- * @param synth
- * @param note
- * @param endtime
- */
 function stopnote(synth,note,endtime){
     console.log("stop" + note)
     synth.triggerRelease(note,endtime)
 }
 
-/**
- *
- * @param length
- * @returns {[]}
- */
 function createSongContainer(length){
     let tempArray = []
     for (let i = 0; i < length; i++){
@@ -381,11 +346,6 @@ function createSongContainer(length){
     return tempArray
 }
 
-/**
- *
- * @param length
- * @param keynotes
- */
 function createPlayground(length,keynotes){
 
 
@@ -451,12 +411,6 @@ function createPlayground(length,keynotes){
 
 }
 
-/**
- *
- * @param lastClicked
- * @param lastReleased
- * @param song
- */
 function addnote(lastClicked,lastReleased){
     //si on clique sur un endroit
     console.log(lastClicked[0])
@@ -499,41 +453,34 @@ function addnote(lastClicked,lastReleased){
     }
 }
 
-/**
- *
- * @param indexmin
- * @param indexmax
- * @param note
- * @param song
- */
 function noteedit(indexmin,indexmax,note){
-    console.log(window.song)
     let song =window.song["riff"]
     for (let i = indexmin; i < indexmax; i++) {
         document.getElementsByClassName(note + " " + i)[0].classList.add("played")
     }
+    document.getElementsByClassName(note + " " + (indexmax-1))[0].classList.add("endnote")
+
     song[indexmin].push("+" + note)
     song[indexmax - 1].push("-" + note)
 }
 
-/**
- *
- * @param note
- * @param index
- * @param song
- */
 function removeNote(note,index){
     let song =window.song["riff"]
     while(!song[index].includes("+"+note)){
         document.getElementsByClassName(note+" "+index)[0].classList.remove("played")
+        document.getElementsByClassName(note+" "+index)[0].classList.remove("endnote")
+
         index--;
     }
     document.getElementsByClassName(note+" "+index)[0].classList.remove("played")
+    document.getElementsByClassName(note+" "+index)[0].classList.remove("endnote")
+
     song[index].splice(song[index].indexOf("+"+note),1)
     while(!song[index].includes("-"+note)){
 
         index++;
         document.getElementsByClassName(note+" "+index)[0].classList.remove("played")
+        document.getElementsByClassName(note+" "+index)[0].classList.remove("endnote")
     }
     song[index].splice(song[index].indexOf("-"+note),1)
 }
