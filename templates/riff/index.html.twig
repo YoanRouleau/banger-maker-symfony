@@ -4,28 +4,60 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    /*.example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }*/
 </style>
     <script src="/js/banger-maker/package/node_modules/tone/build/Tone.js"></script>
     <script type="module" src="/js/banger-maker/widget2.js"></script>
     <div id="playgroundcontainer">
     </div>
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {#<h1>Hello {{ controller_name }}! ✅</h1>
 
     This friendly message is coming from:
     <ul>
         <li>Your controller at <code><a href="{{ 'C:/Users/Windows 10/PhpstormProjects/Banger-Maker-symfony/banger_maker_symfony/src/Controller/RiffController.php'|file_link(0) }}">src/Controller/RiffController.php</a></code></li>
         <li>Your template at <code><a href="{{ 'C:/Users/Windows 10/PhpstormProjects/Banger-Maker-symfony/banger_maker_symfony/templates/riff/index.html.twig'|file_link(0) }}">templates/riff/index.html.twig</a></code></li>
-    </ul>
+    </ul>#}
+    <div class="riff-head">
+        {#<div class="riff-image-tiles">
+            <img src="https://m.media-amazon.com/images/I/81BDs--DMNL._SS500_.jpg" alt="">
+            <img src="https://m.media-amazon.com/images/I/81BDs--DMNL._SS500_.jpg" alt="">
+            <img src="https://m.media-amazon.com/images/I/81BDs--DMNL._SS500_.jpg" alt="">
+            <img src="https://m.media-amazon.com/images/I/81BDs--DMNL._SS500_.jpg" alt="">
+        </div>#}
+        <h2>Bienvenue sur gang band</h2>
+        <h1>Découvrez nos dernières Riffs !</h1>
+    </div>
 </div>
-
-    {% for riff in riffs %}
+<div class="riff-body">
+    {#{% for riff in riffs %}
         {{ riff.name }}
-
         <button class="playsong" value="{{ riff.customsongfile }}!{{ riff.getInstrument.Id }}">Play</button>
-    {% endfor %}
+    {% endfor %}#}
+    <table class="riff-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Nom</th>
+                <th>Instrument</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for riff in riffs %}
+                <tr>
+                    <td class="riff-table-play" style="width: 5%">
+                        <button class="playsong" value="{{ riff.customsongfile }}!{{ riff.getInstrument.Id }}">▶</button>
+                    </td>
+                    <td style="width: 25%">{{ riff.name }}</td>
+                    <td style="width: 15%">{{ riff.instrument.name }}</td>
+                    <td style="width: 55%">{{ riff.decription }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
     <script>
         document.addEventListener("DOMContentLoaded",()=>{
             let playbuttons = document.querySelectorAll('.playsong')
