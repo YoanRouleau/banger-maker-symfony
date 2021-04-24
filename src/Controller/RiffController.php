@@ -33,7 +33,16 @@ class RiffController extends AbstractController
             'controller_name' => 'RiffController',"riffs"=>$riffs
         ]);
     }
-
+    /**
+     * @Route("/riff/{id}", name="riff_show")
+     */
+    public function show(EntityManagerInterface $entityManager, $id): Response
+    {
+        $riff = $entityManager->getRepository(Riff::class)->findOneBy( ['id'=> $id] );
+        return $this->render('riff/show.html.twig', [
+            'controller_name' => 'RiffController',"riff"=>$riff
+        ]);
+    }
     /**
      * @Route("/riff/new", name="riff_new")
      */
