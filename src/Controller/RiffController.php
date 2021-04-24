@@ -24,7 +24,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class RiffController extends AbstractController
 {
     /**
-     * @Route("/riff", name="riff")
+     * @Route("/", name="riff")
      */
     public function index(EntityManagerInterface $entityManager): Response
     {

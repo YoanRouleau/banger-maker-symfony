@@ -1,0 +1,4 @@
+body{background: #181818; font-family: "Roboto", sans-serif;}
+.content_middle{ width:80%;}
+.content_left{ width: 20%; height: 100%; font-size: 14px; line-height: 1.42857143; color: #333;}
+.content{display: flex;flex-flow: row wrap;}
