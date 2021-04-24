@@ -139,7 +139,7 @@ class Categorie
     }
 
     /**
-     * @return Collection|self[]
+     * @return Collection|Categorie[]
      */
     public function getSousCategories(): Collection
     {

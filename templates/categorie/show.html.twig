@@ -21,9 +21,13 @@
         </ul>
     </div>
     {{ categorie.name }}
+
+
+
     {% for riff in riffs %}
         {{ riff.name }}
         {{ riff.categorie.id }}
+
         <button class="playsong" value="{{ riff.customsongfile }}!{{ riff.getInstrument.Id }}">Play</button>
     {% endfor %}
     <script>

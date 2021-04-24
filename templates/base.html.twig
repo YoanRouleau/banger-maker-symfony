@@ -18,6 +18,47 @@
         </head>
     <body>
 
+    <header>
+        {% if app.user is defined and app.user is not null  %}
+            {{ app.user.username }}
+            <a href="/logout">
+                <button class="btn-accent" >
+                    Logout
+                </button>
+            </a>
+        {% else %}
+            <a href="/login">
+                <button class="btn-accent" >
+                    Sign In
+                </button>
+            </a>
+            <a href="/register">
+
+            <button class="btn-accent-outlined">
+                Register
+            </button>
+            </a>
+
+        {% endif %}
+
+{#        <div class="user__info">#}
+
+{#      <span class="user__info__img">#}
+
+{#        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/7022/adam_proPic.jpg" alt="Profile Picture" class="img-responsive">#}
+
+{#      </span>#}
+
+{#            <span class="user__info__name">#}
+
+{#        <span class="first">Adam</span>#}
+
+{#        <span class="last">Lowenthal</span>#}
+
+{#      </span>#}
+
+{#        </div>#}
+    </header>
 
     <section class="content">
             <section class="content_left">
