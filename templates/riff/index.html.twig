@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RiffController!{% endblock %}
+{% block title %}Gangband - Espace de partage de riffs{% endblock %}
 
 {% block body %}
 <style>
@@ -14,10 +14,17 @@
 <div class="example-wrapper">
     <div class="riff-head">
         <div class="riff-image-tiles">
+
             <img src="../img/BeatlesHenryRoad.jpg" alt="">
             <img src="../img/redhothenrypeper.jpg" alt="">
             <img src="../img/Henri8.png" alt="">
             <img src="../img/hanri_album.png" alt="">
+
+{#            <img src="https://m.media-amazon.com/images/I/81BDs--DMNL._SS500_.jpg" alt="">#}
+{#            <img src="https://upload.wikimedia.org/wikipedia/en/d/d3/DragonsWhateverCover.jpg" alt="">#}
+{#            <img src="https://m.media-amazon.com/images/I/81BDs--DMNL._SS500_.jpg" alt="">#}
+{#            <img src="https://m.media-amazon.com/images/I/81BDs--DMNL._SS500_.jpg" alt="">#}
+
         </div>
         <div class="riff-head-content">
             <h2>Bienvenue sur gang band</h2>
@@ -45,7 +52,9 @@
                     </td>
                     <td style="width: 20%">
                         {% if riff.name is defined and riff.name is not null %}
-                            <p>{{ riff.name }}</p>
+                            <a href="/riff/{{ riff.id }}">
+                                <p>{{ riff.name }}</p>
+                            </a>
                         {% else %}
                             <p>-</p>
                         {% endif %}
