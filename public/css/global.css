@@ -1,7 +1,68 @@
-body{background: #181818; font-family: "Roboto", sans-serif;}
-.content_middle{ width:80%;}
-.content_left{ width: 20%; height: 100%; font-size: 14px; line-height: 1.42857143; color: #333;}
-.content{display: flex;flex-flow: row wrap;}
+body{
+    background: #181818;
+    font-family: "Roboto", sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+.content_middle{
+    width:80%;
+}
+
+.content_left{
+    width: 15%;
+    height: 100vh;
+    font-size: 1.0em;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: rgba(0, 0, 0, 0.66);
+}
+.content{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.navigation__list__header__title{
+    margin-top: 15px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-size: 1em;
+}
+
+.navigation__list__item:hover{
+    color: #ffffff;
+}
+.navigation__list__item{
+    color: #aaaaaa;
+    padding: 3px 0;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding-left:5px;
+    font-size: 0.9em;
+}
+.navigation__list__header{
+
+    text-transform: uppercase;
+    font-size: 0.85em;
+    padding-bottom: 7px;
+
+}
+
+i{
+    margin-right: 7px;
+}
+path{
+    fill: #aaaaaa;
+}
+
+.navigation{
+    color: #aaaaaa;
+    padding-left:15px;
+}
+
 
 /* -- RIFF -- */
 .riff-head{
@@ -14,6 +75,7 @@ body{background: #181818; font-family: "Roboto", sans-serif;}
     padding: 20px 50px;
     background: linear-gradient(180deg, rgba(61,61,61,1) 0%, rgba(0,0,0,0) 100%);
 }
+
 .riff-head h1{
     color: white;
     font-size: 2.5em;
@@ -102,5 +164,6 @@ tbody tr:hover .riff-table-play{
     height: 50%;
     width: 50%;
 }
+
 
 

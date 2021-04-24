@@ -33,6 +33,31 @@ class RiffController extends AbstractController
             'controller_name' => 'RiffController',"riffs"=>$riffs
         ]);
     }
+
+    /**
+     * @Route("/riff/add", name="riff_add")
+     */
+    public function add(Request $request): Response
+    {
+        if($request -> isMethod('post')){
+
+        }
+        $form = $this->createFormBuilder()->setAction($this
+            ->generateUrl('riff_new'))
+            ->add('name', TextType::class)
+            ->add('description', TextareaType::class)
+            ->add('customsongfile', TextType::class)
+            ->add('categorie',EntityType::class,['class'=>Categorie::class])
+            ->add('instrument',EntityType::class,['class'=>Instrument::class])
+            ->getForm();
+
+        return $this->render('riff/add.html.twig', [
+            'controller_name' => 'RiffController',
+            'form' => $form->createView()
+        ]);
+
+
+    }
     /**
      * @Route("/riff/{id}", name="riff_show")
      */
@@ -72,28 +97,5 @@ class RiffController extends AbstractController
     }
 
 
-    /**
-     * @Route("/riff/add", name="riff_add")
-     */
-    public function add(Request $request): Response
-    {
-        if($request -> isMethod('post')){
 
-        }
-        $form = $this->createFormBuilder()->setAction($this
-            ->generateUrl('riff_new'))
-            ->add('name', TextType::class)
-            ->add('description', TextareaType::class)
-            ->add('customsongfile', TextType::class)
-            ->add('categorie',EntityType::class,['class'=>Categorie::class])
-            ->add('instrument',EntityType::class,['class'=>Instrument::class])
-            ->getForm();
-
-        return $this->render('riff/add.html.twig', [
-            'controller_name' => 'RiffController',
-            'form' => $form->createView()
-        ]);
-
-
-    }
 }
