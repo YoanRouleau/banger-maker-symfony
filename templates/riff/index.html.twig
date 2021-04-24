@@ -12,13 +12,6 @@
     <div id="playgroundcontainer">
     </div>
 <div class="example-wrapper">
-    {#<h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Windows 10/PhpstormProjects/Banger-Maker-symfony/banger_maker_symfony/src/Controller/RiffController.php'|file_link(0) }}">src/Controller/RiffController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Windows 10/PhpstormProjects/Banger-Maker-symfony/banger_maker_symfony/templates/riff/index.html.twig'|file_link(0) }}">templates/riff/index.html.twig</a></code></li>
-    </ul>#}
     <div class="riff-head">
         {#<div class="riff-image-tiles">
             <img src="https://m.media-amazon.com/images/I/81BDs--DMNL._SS500_.jpg" alt="">
@@ -38,19 +31,43 @@
                 <th>Nom</th>
                 <th>Instrument</th>
                 <th>Description</th>
-                <th>Auteur <i class="fas fa-male"></i></th>
+                <th><i class="fas fa-male" style="font-size: 1.5em"></i></th>
             </tr>
         </thead>
         <tbody>
             {% for riff in riffs %}
                 <tr>
-                    <td class="riff-table-play" style="width: 5%">
+                    <td class="riff-table-play" style="width: 3%">
                         <button class="playsong" value="{{ riff.customsongfile }}!{{ riff.getInstrument.Id }}">▶</button>
                     </td>
-                    <td style="width: 25%"><p>{{ riff.name }}</p></td>
-                    <td style="width: 15%"><p>{{ riff.instrument.name }}</p></td>
-                    <td class="riff-table-description" style="width: 30%"><p>{{ riff.decription }}</p></td>
-                    <td style="width: 15%"><p>{{ riff.author.username }}</p></td>
+                    <td style="width: 25%">
+                        {% if riff.name is defined and riff.name is not null %}
+                            <p>{{ riff.name }}</p>
+                        {% else %}
+                            <p>-</p>
+                        {% endif %}
+                    </td>
+                    <td style="width: 10%">
+                        {% if riff.instrument.name is defined and riff.instrument.name is not null %}
+                            <p>{{ riff.instrument.name }}</p>
+                        {% else %}
+                            <p>-</p>
+                        {% endif %}
+                    </td>
+                    <td class="riff-table-description" style="width: 35%">
+                        {% if riff.decription is defined and riff.decription is not null %}
+                            <p>{{ riff.decription }}</p>
+                        {% else %}
+                            <p>-</p>
+                        {% endif %}
+                    </td>
+                    <td style="width: 15%">
+                        {% if riff.author.username is defined and riff.author.username is not null %}
+                            <p>{{ riff.author.username }}</p>
+                        {% else %}
+                            <p>-</p>
+                        {% endif %}
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

@@ -8,7 +8,7 @@ a{
 }
 
 .content_middle{
-    width:80%;
+    width:85%;
 }
 
 .content_left{
@@ -121,7 +121,7 @@ path{
     border-top: solid 0.5px #7a7a7a;
 }
 .riff-table tbody td{
-    padding: 14px 0;
+    padding: 15px 25px 15px 0px;
 }
 .riff-table tbody td p{
     overflow: hidden;
