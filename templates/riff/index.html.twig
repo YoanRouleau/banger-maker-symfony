@@ -32,41 +32,47 @@
                 <th>Instrument</th>
                 <th>Description</th>
                 <th><i class="fas fa-male" style="font-size: 1.5em"></i></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             {% for riff in riffs %}
                 <tr>
                     <td class="riff-table-play" style="width: 3%">
-                        <button class="playsong" value="{{ riff.customsongfile }}!{{ riff.getInstrument.Id }}">▶</button>
+                        <button class="playsong" value="{{ riff.customsongfile }}!{{ riff.getInstrument.Id }}"><i class="fas fa-play-circle"></i></button>
                     </td>
-                    <td style="width: 25%">
+                    <td style="width: 20%">
                         {% if riff.name is defined and riff.name is not null %}
                             <p>{{ riff.name }}</p>
                         {% else %}
                             <p>-</p>
                         {% endif %}
                     </td>
-                    <td style="width: 10%">
+                    <td style="width: 15%">
                         {% if riff.instrument.name is defined and riff.instrument.name is not null %}
                             <p>{{ riff.instrument.name }}</p>
                         {% else %}
                             <p>-</p>
                         {% endif %}
                     </td>
-                    <td class="riff-table-description" style="width: 35%">
+                    <td class="riff-table-description" style="width: 40%">
                         {% if riff.decription is defined and riff.decription is not null %}
                             <p>{{ riff.decription }}</p>
                         {% else %}
                             <p>-</p>
                         {% endif %}
                     </td>
-                    <td style="width: 15%">
+                    <td style="width: 10%">
                         {% if riff.author.username is defined and riff.author.username is not null %}
                             <p>{{ riff.author.username }}</p>
                         {% else %}
                             <p>-</p>
                         {% endif %}
+                    </td>
+                    <td class="riff-table-details" style="width: 3%">
+                        <a href="/riff/{{ riff.id }}">
+                            <i class="fas fa-info-circle"></i>
+                        </a>
                     </td>
                 </tr>
             {% endfor %}

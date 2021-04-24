@@ -136,6 +136,10 @@ path{
     transition: all 0.2s ease-in-out;
     transform: translateX(-5px);
 }
+.riff-table-details a{
+    color: white;
+    text-decoration: none;
+}
 
 
 tbody tr:hover .riff-table-play{
