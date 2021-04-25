@@ -1,35 +1,82 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RiffController!{% endblock %}
+{% block title %}Gangband - Espace de partage de riffs{% endblock %}
 
 {% block body %}
     <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        /*.example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }*/
     </style>
     <script src="/js/banger-maker/package/node_modules/tone/build/Tone.js"></script>
     <script type="module" src="/js/banger-maker/widget2.js"></script>
     <div id="playgroundcontainer">
     </div>
     <div class="example-wrapper">
-        <h1>Hello {{ controller_name }}! ✅</h1>
-
-        This friendly message is coming from:
-        <ul>
-            <li>Your controller at <code><a href="{{ 'C:/Users/Windows 10/PhpstormProjects/Banger-Maker-symfony/banger_maker_symfony/src/Controller/RiffController.php'|file_link(0) }}">src/Controller/RiffController.php</a></code></li>
-            <li>Your template at <code><a href="{{ 'C:/Users/Windows 10/PhpstormProjects/Banger-Maker-symfony/banger_maker_symfony/templates/riff/index.html.twig'|file_link(0) }}">templates/riff/index.html.twig</a></code></li>
-        </ul>
+        <div class="riff-head"  style="background: linear-gradient(0deg, rgba(24,24,24,1) 0%, rgba(0,0,0,0) 100%), url('{{ categorie.picture }}')">
+            <img class="riff-image-tiles" src={{ categorie.picture }} alt="">
+            <div class="riff-head-content">
+                <h1>Les musiques de la catégorie {{ categorie.name }} !</h1>
+            </div>
+        </div>
     </div>
-    {{ categorie.name }}
-
-
-
-    {% for riff in riffs %}
-        {{ riff.name }}
-        {{ riff.categorie.id }}
-
-        <button class="playsong" value="{{ riff.customsongfile }}!{{ riff.getInstrument.Id }}">Play</button>
-    {% endfor %}
+    <div class="riff-body">
+        <table class="riff-table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Nom</th>
+                <th>Instrument</th>
+                <th>Description</th>
+                <th><i class="fas fa-male" style="font-size: 1.5em"></i></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for riff in riffs %}
+                <tr>
+                    <td class="riff-table-play" style="width: 3%">
+                        <button class="playsong" value="{{ riff.customsongfile }}!{{ riff.getInstrument.Id }}"><i class="fas fa-play-circle"></i></button>
+                    </td>
+                    <td style="width: 20%">
+                        {% if riff.name is defined and riff.name is not null %}
+                            <a href="/riff/{{ riff.id }}">
+                                <p>{{ riff.name }}</p>
+                            </a>
+                        {% else %}
+                            <p>-</p>
+                        {% endif %}
+                    </td>
+                    <td style="width: 15%">
+                        {% if riff.instrument.name is defined and riff.instrument.name is not null %}
+                            <p>{{ riff.instrument.name }}</p>
+                        {% else %}
+                            <p>-</p>
+                        {% endif %}
+                    </td>
+                    <td class="riff-table-description" style="width: 40%">
+                        {% if riff.decription is defined and riff.decription is not null %}
+                            <p>{{ riff.decription }}</p>
+                        {% else %}
+                            <p>-</p>
+                        {% endif %}
+                    </td>
+                    <td style="width: 10%">
+                        {% if riff.author.username is defined and riff.author.username is not null %}
+                            <p>{{ riff.author.username }}</p>
+                        {% else %}
+                            <p>-</p>
+                        {% endif %}
+                    </td>
+                    <td class="riff-table-details" style="width: 3%">
+                        <a href="/riff/{{ riff.id }}">
+                            <i class="fas fa-info-circle"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
     <script>
         document.addEventListener("DOMContentLoaded",()=>{
             let playbuttons = document.querySelectorAll('.playsong')

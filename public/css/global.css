@@ -214,22 +214,27 @@ tbody tr:hover .riff-table-play{
 
 
 .btn-accent {
-    margin-left: 15px;
     border-radius: 28px;
     font-family: "Roboto", sans-serif;
     outline: none;
     border:none;
+    font-weight: bold;
     color: #ffffff;
     font-size: 13px;
     background: #ff8324;
-    padding: 8px 15px 8px 15px;
+    padding: 7px 15px 7px 15px;
+    margin-top:2px;
     text-decoration: none;
 
 }
+.round-img{
+    border-radius: 50%;
+    height:32px;
+    margin-right:7px;
 
+}
 
 .btn-accent-outlined {
-    margin-left: 15px;
     border-radius: 28px;
     font-family: "Roboto", sans-serif;
     outline:#ff8324;
