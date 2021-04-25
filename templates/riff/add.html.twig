@@ -7,41 +7,48 @@
     {% block stylesheets %}
 
     {% endblock %}
-    <link rel="stylesheet" href="/css/riff-form.css">
-    {{ form_start(form) }}
-    <hr>
-{#   Some inputs are hidden but used like custom file #}
-    {{ form_row(form.customsongfile) }}
-    {{ form_row(form.categorie) }}
-    {{ form_row(form.instrument) }}
-    {{ form_row(form.name) }}
-    {{ form_row(form.description) }}
-    <input type="submit" class="btn btn-primary" id="hiddensubmit"value="Send">
-    {{ form_end(form,  {'render_rest': false}) }}
 
-    <script src="/js/banger-maker/package/node_modules/tone/build/Tone.js"></script>
-    <script type="module" src="/js/banger-maker/widget.js"></script>
-    <div id="playgroundcontainer">
-    </div>
+    {% if app.user is defined and app.user is not null  %}
+        <link rel="stylesheet" href="/css/riff-form.css">
+        {{ form_start(form) }}
+        <hr>
+        {#   Some inputs are hidden but used like custom file #}
+        {{ form_row(form.customsongfile) }}
+        {{ form_row(form.categorie) }}
+        {{ form_row(form.instrument) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.description) }}
+        <input type="submit" class="btn btn-primary" id="hiddensubmit"value="Send">
+        {{ form_end(form,  {'render_rest': false}) }}
+
+        <script src="/js/banger-maker/package/node_modules/tone/build/Tone.js"></script>
+        <script type="module" src="/js/banger-maker/widget.js"></script>
+        <div id="playgroundcontainer">
+        </div>
 
 
-    <button id="addbutton"> add </button>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            document.getElementById("addbutton").addEventListener("click",()=>{
-                document.getElementById("form_customsongfile").value = JSON.stringify(window.song);
-                document.getElementById("hiddensubmit").click()
+        <button id="addbutton"> add </button>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                document.getElementById("addbutton").addEventListener("click",()=>{
+                    document.getElementById("form_customsongfile").value = JSON.stringify(window.song);
+                    document.getElementById("hiddensubmit").click()
 
+                })
+
+                document.getElementById("form_instrument").addEventListener("change",()=>{
+                    window.instrument = document.getElementById("form_instrument").value
+                    document.getElementById("invisible-button-instr").click()
+
+                })
             })
-
-            document.getElementById("form_instrument").addEventListener("change",()=>{
-                window.instrument = document.getElementById("form_instrument").value
-               document.getElementById("invisible-button-instr").click()
-
-            })
+        </script>
 
 
+    {% else %}
+     Vous ne pouvez pas composer sans être logged
 
-        })
-    </script>
+
+    {% endif %}
+
 {% endblock %}

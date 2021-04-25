@@ -58,16 +58,16 @@ class RiffController extends AbstractController
 
 
     }
-    /**
-     * @Route("/riff/{id}", name="riff_show")
-     */
-    public function show(EntityManagerInterface $entityManager, $id): Response
-    {
-        $riff = $entityManager->getRepository(Riff::class)->findOneBy( ['id'=> $id] );
-        return $this->render('riff/show.html.twig', [
-            'controller_name' => 'RiffController',"riff"=>$riff
-        ]);
-    }
+//    /**
+//     * @Route("/riff/{id}", name="riff_show")
+//     */
+//    public function show(EntityManagerInterface $entityManager, $id): Response
+//    {
+//        $riff = $entityManager->getRepository(Riff::class)->findOneBy( ['id'=> $id] );
+//        return $this->render('riff/show.html.twig', [
+//            'controller_name' => 'RiffController',"riff"=>$riff
+//        ]);
+//    }
     /**
      * @Route("/riff/new", name="riff_new")
      */
@@ -90,9 +90,9 @@ class RiffController extends AbstractController
             $this->getDoctrine()->getManager()->persist($riff);
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('riff_show');
+            return $this->redirectToRoute('riff');
         }
-        return $this->redirectToRoute('riff_show',['error' => "Votre commentaire est giga chelou du coup ça marche pas"]);
+        #return $this->redirectToRoute('riff',['error' => "Votre commentaire est giga chelou du coup ça marche pas"]);
 
     }
 
