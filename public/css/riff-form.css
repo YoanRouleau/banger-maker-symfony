@@ -1,6 +1,72 @@
+h1{
+    color: white;
+    padding: 50px 50px 0 50px;
+    font-size: 2em;
+}
+#toolcontainer label{
+    color: white;
+}
 #form_customsongfile{
     display:none;
 }
 #hiddensubmit{
     display: none;
 }
+
+#addbutton{
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    font-size: 1.2em;
+}
+#addbutton i{
+    margin-right: 0;
+    padding-left: 5px;
+}
+
+.riffInput-hidden{
+    display: none;
+}
+
+.riffForm{
+    padding: 50px;
+}
+.riffForm div{
+    padding: 10px;
+}
+.riffForm label{
+    display: block;
+    color: white;
+    padding-bottom: 10px;
+}
+.riffInput{
+    font-family: 'Lato', sans-serif;
+    background-color: #2b002b;
+    padding: 10px 15px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 2em;
+    width: 200px;
+}
+.riffInput:focus{
+    outline: yellow;
+}
+.riffInput.riffSelect{
+    height: 3.5em;
+    width: 100%;
+}
+textarea.riffInput{
+    min-width: 50%;
+}
+
+.riffDropdowns{
+    padding: 0 !important;
+    display: flex;
+    flex-direction: row;
+}
+
+#playgroundcontainer{
+    padding-bottom: 50px;
+}
+
