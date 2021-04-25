@@ -46,7 +46,23 @@
 
 
     {% else %}
-     Vous ne pouvez pas composer sans être logged
+        <div>
+            Il faut s'enregistrer pour se login:
+            <div class="navigation__list__item">
+                <a href="/login">
+                    <button class="btn-accent" >
+                        Sign In
+                    </button>
+                </a>
+                <a href="/register">
+
+                    <button class="btn-accent-outlined">
+                        Register
+                    </button>
+                </a>
+
+            </div>
+        </div>
 
 
     {% endif %}
