@@ -1,5 +1,5 @@
 body{
-    background: #181818;
+    background: #110011;
     font-family: 'Lato', sans-serif;
 }
 
@@ -24,7 +24,7 @@ a{
     font-size: 1.0em;
     line-height: 1.42857143;
     color: #333;
-    background-color: #181818;
+    background-color: #110011;
 }
 
 .navigation{
@@ -72,6 +72,11 @@ a{
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.navigation__logo{
+    height: 100px;
+    width: 100px;
+}
 .navigation i{
     margin-right: 10px;
 }
@@ -93,7 +98,7 @@ path{
     height: 200px;
     margin: 0;
     padding: 40px 50px;
-    background: linear-gradient(0deg, rgba(24,24,24,1) 0%, rgba(0,0,0,0) 100%), url("../img/riff-bg.png");
+    background: linear-gradient(0deg, rgba(17,0,17,1) 0%, rgba(0,0,0,0) 100%), url("../img/riff-bg-2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -237,25 +242,25 @@ tbody tr:hover .riff-table-play{
     font-weight: bold;
     color: #ffffff;
     font-size: 13px;
-    background: #ff8324;
+    background: #FA37A4;
     padding: 7px 15px 7px 15px;
     margin-bottom: 10px;
     margin-right: 10px;
     text-decoration: none;
     margin-left: unset;
-    border: solid .5px #ff8324;
+    border: solid .5px #FA37A4;
     transition: all 0.3s ease-in-out;
 }
 .btn-accent:hover{
-    background-color: #181818;
-    color: #ff8324;
+    background-color: #110011;
+    color: #FA37A4;
     transition: all 0.3s ease-in-out;
 }
 .btn-accent.outlined {
     border-radius: 28px;
     font-family: "Roboto", sans-serif;
-    outline:#ff8324;
-    color: #ff8324;
+    outline:#FA37A4;
+    color: #FA37A4;
     font-size: 13px;
     background: #ffffff;
     padding: 8px 15px 8px 15px;
@@ -264,7 +269,7 @@ tbody tr:hover .riff-table-play{
 }
 .btn-accent.outlined:hover{
     color: #ffffff;
-    background: #181818;
+    background: #110011;
 }
 
 .round-img{
@@ -333,6 +338,6 @@ tbody tr:hover .riff-table-play{
     margin: 5px 0;
 }
 .playground-oops a{
-    color: #ff8324 !important;
+    color: #FA37A4 !important;
     text-decoration: underline !important;
 }
