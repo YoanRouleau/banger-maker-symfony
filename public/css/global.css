@@ -1,5 +1,5 @@
 body{
-    background: #110011;
+    background: #160016;
     font-family: 'Lato', sans-serif;
 }
 
@@ -31,6 +31,7 @@ a{
     height: 100%;
     color: #aaaaaa;
     padding-left:15px;
+   /* background: linear-gradient(270deg, rgba(23,0,23,1) 0%, rgba(0,0,0,0) 25%);*/
 }
 .navigation__list{
     height: 100%;
@@ -98,7 +99,7 @@ path{
     height: 200px;
     margin: 0;
     padding: 40px 50px;
-    background: linear-gradient(0deg, rgba(17,0,17,1) 0%, rgba(0,0,0,0) 100%), url("../img/riff-bg-2.jpg");
+    background: linear-gradient(0deg, rgba(22,0,22,1) 0%, rgba(0,0,0,0) 100%), url("../img/riff-bg-2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -233,12 +234,11 @@ tbody tr:hover .riff-table-play{
     font-family: 'Nothing You Could Do', cursive;
 }
 
-.btn-accent {
+.btn-accent, .btn-accent.outlined.selected{
     cursor: pointer;
     border-radius: 28px;
     font-family: "Roboto", sans-serif;
     outline: none;
-
     font-weight: bold;
     color: #ffffff;
     font-size: 13px;
@@ -256,7 +256,7 @@ tbody tr:hover .riff-table-play{
     color: #FA37A4;
     transition: all 0.3s ease-in-out;
 }
-.btn-accent.outlined {
+.btn-accent.outlined{
     border-radius: 28px;
     font-family: "Roboto", sans-serif;
     outline:#FA37A4;
@@ -331,7 +331,7 @@ tbody tr:hover .riff-table-play{
     color: white;
 }
 .playground-oops h1{
-    font-size: 3.5em;
+    font-size: 4.5em;
     margin: 20px 0px;
 }
 .playground-oops p{
