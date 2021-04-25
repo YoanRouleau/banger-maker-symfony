@@ -1,31 +1,142 @@
-body{background: #181818; font-family: "Roboto", sans-serif;}
-.content_middle{ width:80%;}
-.content_left{ width: 20%; height: 100%; font-size: 14px; line-height: 1.42857143; color: #333;}
-.content{display: flex;flex-flow: row wrap;}
+body{
+    background: #110011;
+    font-family: 'Lato', sans-serif;
+}
+
+h1{
+    font-family: 'Nothing You Could Do', cursive;
+}
+
+a{
+    text-decoration: none;
+}
+
+.content{
+    display: flex;
+    flex-flow: row wrap;
+}
+.content_middle{
+    width:85%;
+}
+.content_left{
+    width: 15%;
+    height: 100vh;
+    font-size: 1.0em;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #110011;
+}
+
+.navigation{
+    height: 100%;
+    color: #aaaaaa;
+    padding-left:15px;
+}
+.navigation__list{
+    height: 100%;
+    position: relative;
+}
+.navigation__list__header__title{
+    padding-top: 15px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-size: 1em;
+}
+
+.navigation__list__item{
+    color: #aaaaaa;
+    padding: 10px 0;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    font-size: 0.9em;
+    transition: all 0.3s ease-in-out;
+}
+.navigation__list__item:hover{
+    color: #ffffff;
+    transition: all 0.3s ease-in-out;
+}
+
+.navigation__list__header{
+    text-transform: uppercase;
+    font-size: 0.85em;
+    padding-bottom: 7px;
+}
+.navigation__account_section{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 20px;
+}
+.navigation__account_section .navigation__list__item{
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.navigation__logo{
+    height: 100px;
+    width: 100px;
+}
+.navigation i{
+    margin-right: 10px;
+}
+i{
+    margin-right: 7px;
+}
+path{
+    fill: #aaaaaa;
+}
+
+
 
 /* -- RIFF -- */
 .riff-head{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: flex-start;
     align-items: flex-start;
-    width: 100%;
     height: 200px;
     margin: 0;
-    padding: 20px 50px;
-    background: linear-gradient(180deg, rgba(61,61,61,1) 0%, rgba(0,0,0,0) 100%);
+    padding: 40px 50px;
+    background: linear-gradient(0deg, rgba(17,0,17,1) 0%, rgba(0,0,0,0) 100%), url("../img/riff-bg-2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
+.riff-head h1{
+    font-family: 'Nothing You Could Do', cursive;
+}
+
+.riff-image-tiles{
+    margin-right: 40px;
+}
+
+.riff-image-tiles img{
+    height: 50%;
+    width: 50%;
+}
+
 .riff-head h1{
     color: white;
     font-size: 2.5em;
 }
 .riff-head h2{
     color: white;
-    font-size: 2.5em;
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 0.7em;
     padding-bottom: 5px;
+}
+
+.riff-head-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.riff-body{
+    padding: 0 50px;
 }
 
 .riff-image-tiles{
@@ -39,27 +150,45 @@ body{background: #181818; font-family: "Roboto", sans-serif;}
 .riff-table{
     width: 100%;
     color: white;
+    border-collapse: collapse;
 }
 
 .riff-table thead tr th{
     height: 50px;
 }
 .riff-table th{
+    font-family: 'Nothing You Could Do', cursive;
     text-align: left;
     text-transform: uppercase;
     font-weight: lighter;
     letter-spacing: 4px;
     color: #cbcbcb;
-    font-size: 0.7em;
+    font-size: 0.7vw;
+}
+.riff-table tbody tr{
+    border-top: solid 0.5px #7a7a7a;
+}
+.riff-table tbody td{
+    padding: 15px 25px 15px 0px;
+}
+.riff-table tbody td a{
+    color: white;
+    text-decoration: none;
+}
+.riff-table tbody td p{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .riff-table-play{
-    text-align: center;
+    text-align: left;
     opacity: 0;
-    visibility: hidden;
     transition: all 0.2s ease-in-out;
     transform: translateX(-5px);
 }
+
 
 tbody tr:hover .riff-table-play{
     opacity: 1;
@@ -79,9 +208,136 @@ tbody tr:hover .riff-table-play{
     border: none;
 }
 
-.riff-image-tiles img{
-    height: 50%;
-    width: 50%;
+.riff-table .playsong:hover{
+    cursor: pointer;
 }
 
 
+/*--- CATEGORIES ---*/
+
+.categories-head{
+    padding: 50px;
+}
+.categories-head h1{
+    font-size: 2.5em;
+    margin: 0;
+    color: white;
+}
+
+.categories-category-section{
+    padding: 0 50px 50px 50px;
+}
+.categories-category-section h2{
+    color: white;
+    font-size: 2em;
+    font-family: 'Nothing You Could Do', cursive;
+}
+
+.btn-accent {
+    cursor: pointer;
+    border-radius: 28px;
+    font-family: "Roboto", sans-serif;
+    outline: none;
+
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 13px;
+    background: #FA37A4;
+    padding: 7px 15px 7px 15px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+    margin-left: unset;
+    border: solid .5px #FA37A4;
+    transition: all 0.3s ease-in-out;
+}
+.btn-accent:hover{
+    background-color: #110011;
+    color: #FA37A4;
+    transition: all 0.3s ease-in-out;
+}
+.btn-accent.outlined {
+    border-radius: 28px;
+    font-family: "Roboto", sans-serif;
+    outline:#FA37A4;
+    color: #FA37A4;
+    font-size: 13px;
+    background: #ffffff;
+    padding: 8px 15px 8px 15px;
+    text-decoration: none;
+    border: solid .5px #ffffff;
+}
+.btn-accent.outlined:hover{
+    color: #ffffff;
+    background: #110011;
+}
+
+.round-img{
+    border-radius: 50%;
+    height:32px;
+    margin-right:7px;
+
+}
+
+
+.categories-tiles-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.categories-tile{
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+.categories-tile p{
+    color: white;
+    font-size: 1.6em;
+    text-align: center;
+    padding: 20px;
+    line-height: 35px;
+    z-index: 100;
+}
+.categories-tile .filter{
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    transition: all 0.3s ease-in-out;
+}
+.categories-tile:hover .filter{
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease-in-out;
+}
+
+
+.playground-oops{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.playground-oops h1{
+    font-size: 3.5em;
+    margin: 20px 0px;
+}
+.playground-oops p{
+    margin: 5px 0;
+}
+.playground-oops a{
+    color: #FA37A4 !important;
+    text-decoration: underline !important;
+}

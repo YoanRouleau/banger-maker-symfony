@@ -117,7 +117,7 @@ function createToolContainer(container){
     buttonplayinvisible.addEventListener("click",() => {
         playWithInstrument()
     })
-    const playbutton = _("button",toolcontainer,{text:"Play once",id:"play-button"})
+    const playbutton = _("button",toolcontainer,{text:"Play once",id:"  "})
     const resetbutton = _("button",toolcontainer,{text:"Reset",id:"reset-button"})
     // const loopbutton = _("button",toolcontainer,{text:"Loop song",id:"play-loop",classes:"off"})
     _("label",toolcontainer,{text:" Tempo : "})

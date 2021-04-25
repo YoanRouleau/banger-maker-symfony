@@ -15,10 +15,12 @@ class InstrumentController extends AbstractController
     /**
      * @Route("/instrument", name="instrument")
      */
-    public function index(): Response
+    public function index(EntityManagerInterface $entityManager): Response
     {
+        $instruments = $entityManager->getRepository(Instrument::class)->findAll();
+
         return $this->render('instrument/index.html.twig', [
-            'controller_name' => 'InstrumentController',
+            'controller_name' => 'InstrumentController',"instruments"=>$instruments
         ]);
     }
 

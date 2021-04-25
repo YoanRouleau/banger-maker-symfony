@@ -33,44 +33,6 @@ class RiffController extends AbstractController
             'controller_name' => 'RiffController',"riffs"=>$riffs
         ]);
     }
-    /**
-     * @Route("/riff/{id}", name="riff_show")
-     */
-    public function show(EntityManagerInterface $entityManager, $id): Response
-    {
-        $riff = $entityManager->getRepository(Riff::class)->findOneBy( ['id'=> $id] );
-        return $this->render('riff/show.html.twig', [
-            'controller_name' => 'RiffController',"riff"=>$riff
-        ]);
-    }
-    /**
-     * @Route("/riff/new", name="riff_new")
-     */
-    public function new(EntityManagerInterface $entityManager, Request $request){
-
-        $user = $this->getUser();
-        if($request->isMethod('POST')){
-
-            $data = $request->get('form');
-
-            $categorie = $entityManager->getRepository(Categorie::class)->findOneBy(['id'=>$data['categorie']]);
-            $instrument = $entityManager->getRepository(Instrument::class)->findOneBy(['id'=>$data['instrument']]);
-            $riff = new Riff();
-            $riff->setAuthor($user);
-            $riff->setCategorie($categorie);
-            $riff->setCustomsongfile($data['customsongfile']);
-            $riff->setInstrument($instrument);
-            $riff->setDecription($data['description']);
-            $riff->setName($data['name']);
-            $this->getDoctrine()->getManager()->persist($riff);
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('riff_show');
-        }
-        return $this->redirectToRoute('riff_show',['error' => "Votre commentaire est giga chelou du coup ça marche pas"]);
-
-    }
-
 
     /**
      * @Route("/riff/add", name="riff_add")
@@ -96,4 +58,58 @@ class RiffController extends AbstractController
 
 
     }
+
+    /**
+     * @Route("/riff/delete/{id}", name="riff_delete")
+     */
+    public function delete(EntityManagerInterface $entityManager,Request $request,$id): Response
+    {
+
+        $riff = $entityManager->getRepository(Riff::class)->findOneBy(['id'=> $id]);
+        $entityManager->remove($riff);
+        $entityManager->flush();
+        return $this->redirectToRoute('riff');
+
+
+    }
+//    /**
+//     * @Route("/riff/{id}", name="riff_show")
+//     */
+//    public function show(EntityManagerInterface $entityManager, $id): Response
+//    {
+//        $riff = $entityManager->getRepository(Riff::class)->findOneBy( ['id'=> $id] );
+//        return $this->render('riff/show.html.twig', [
+//            'controller_name' => 'RiffController',"riff"=>$riff
+//        ]);
+//    }
+    /**
+     * @Route("/riff/new", name="riff_new")
+     */
+    public function new(EntityManagerInterface $entityManager, Request $request){
+
+        $user = $this->getUser();
+        if($request->isMethod('POST')){
+
+            $data = $request->get('form');
+
+            $categorie = $entityManager->getRepository(Categorie::class)->findOneBy(['id'=>$data['categorie']]);
+            $instrument = $entityManager->getRepository(Instrument::class)->findOneBy(['id'=>$data['instrument']]);
+            $riff = new Riff();
+            $riff->setAuthor($user);
+            $riff->setCategorie($categorie);
+            $riff->setCustomsongfile($data['customsongfile']);
+            $riff->setInstrument($instrument);
+            $riff->setDecription($data['description']);
+            $riff->setName($data['name']);
+            $this->getDoctrine()->getManager()->persist($riff);
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('riff');
+        }
+        #return $this->redirectToRoute('riff',['error' => "Votre commentaire est giga chelou du coup ça marche pas"]);
+
+    }
+
+
+
 }

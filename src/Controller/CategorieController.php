@@ -14,10 +14,21 @@ class CategorieController extends AbstractController
     /**
      * @Route("/categorie", name="categorie")
      */
-    public function index(): Response
+    public function index(EntityManagerInterface $entityManager): Response
     {
+        $categories = $entityManager->getRepository(Categorie::class)->findby(['superCategorie'=> null]);
+        /*$categoriesArray = [];
+        foreach ($categories as $category){
+            dd($category->getSuperCategorie()->getName());
+           if($category->getSuperCategorie() == null){
+               array_push($categoriesArray, [ $category->getName(), $category]);
+           }
+           else{
+               array_push($categoriesArray[$category->getSuperCategorie()->getName()], $category);
+           }
+        }*/
         return $this->render('categorie/index.html.twig', [
-            'controller_name' => 'CategorieController',
+            'controller_name' => 'CategorieController', 'categories'=>$categories
         ]);
     }
 

@@ -25,6 +25,7 @@ class LoginAuthentificatorAuthenticator extends AbstractFormLoginAuthenticator i
     use TargetPathTrait;
 
     public const LOGIN_ROUTE = 'app_login';
+    public const HOME_ROUTE = 'app_home';
 
     private $entityManager;
     private $urlGenerator;
@@ -96,7 +97,7 @@ class LoginAuthentificatorAuthenticator extends AbstractFormLoginAuthenticator i
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate('/home'));
+        return new RedirectResponse($this->urlGenerator->generate("riff"));
     }
 
     protected function getLoginUrl()

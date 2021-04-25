@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RiffController!{% endblock %}
+{% block title %}Gangband - Espace de partage de riffs{% endblock %}
 
 {% block body %}
 <style>
@@ -12,29 +12,27 @@
     <div id="playgroundcontainer">
     </div>
 <div class="example-wrapper">
-    {#<h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Windows 10/PhpstormProjects/Banger-Maker-symfony/banger_maker_symfony/src/Controller/RiffController.php'|file_link(0) }}">src/Controller/RiffController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Windows 10/PhpstormProjects/Banger-Maker-symfony/banger_maker_symfony/templates/riff/index.html.twig'|file_link(0) }}">templates/riff/index.html.twig</a></code></li>
-    </ul>#}
     <div class="riff-head">
-        {#<div class="riff-image-tiles">
-            <img src="https://m.media-amazon.com/images/I/81BDs--DMNL._SS500_.jpg" alt="">
-            <img src="https://m.media-amazon.com/images/I/81BDs--DMNL._SS500_.jpg" alt="">
-            <img src="https://m.media-amazon.com/images/I/81BDs--DMNL._SS500_.jpg" alt="">
-            <img src="https://m.media-amazon.com/images/I/81BDs--DMNL._SS500_.jpg" alt="">
-        </div>#}
-        <h2>Bienvenue sur gang band</h2>
-        <h1>Découvrez nos dernières Riffs !</h1>
+        <div class="riff-image-tiles">
+
+            <img src="../img/BeatlesHenryRoad.jpg" alt="">
+            <img src="../img/redhothenrypeper.jpg" alt="">
+            <img src="../img/Henri8.png" alt="">
+            <img src="../img/hanri_album.png" alt="">
+
+{#            <img src="https://m.media-amazon.com/images/I/81BDs--DMNL._SS500_.jpg" alt="">#}
+{#            <img src="https://upload.wikimedia.org/wikipedia/en/d/d3/DragonsWhateverCover.jpg" alt="">#}
+{#            <img src="https://m.media-amazon.com/images/I/81BDs--DMNL._SS500_.jpg" alt="">#}
+{#            <img src="https://m.media-amazon.com/images/I/81BDs--DMNL._SS500_.jpg" alt="">#}
+
+        </div>
+        <div class="riff-head-content">
+            <h2>Bienvenue sur gang band</h2>
+            <h1>Découvrez nos derniers sons !</h1>
+        </div>
     </div>
 </div>
 <div class="riff-body">
-    {#{% for riff in riffs %}
-        {{ riff.name }}
-        <button class="playsong" value="{{ riff.customsongfile }}!{{ riff.getInstrument.Id }}">Play</button>
-    {% endfor %}#}
     <table class="riff-table">
         <thead>
             <tr>
@@ -42,17 +40,63 @@
                 <th>Nom</th>
                 <th>Instrument</th>
                 <th>Description</th>
+                <th><i class="fas fa-male" style="font-size: 1.5em"></i></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             {% for riff in riffs %}
                 <tr>
-                    <td class="riff-table-play" style="width: 5%">
-                        <button class="playsong" value="{{ riff.customsongfile }}!{{ riff.getInstrument.Id }}">▶</button>
+                    <td class="riff-table-play" style="width: 3%">
+                        <button class="playsong" value="{{ riff.customsongfile }}!{{ riff.getInstrument.Id }}"><i class="fas fa-play-circle"></i></button>
                     </td>
-                    <td style="width: 25%">{{ riff.name }}</td>
-                    <td style="width: 15%">{{ riff.instrument.name }}</td>
-                    <td style="width: 55%">{{ riff.decription }}</td>
+                    <td style="width: 20%">
+                        {% if riff.name is defined and riff.name is not null %}
+                            <a href="/riff/{{ riff.id }}">
+                                <p>{{ riff.name }}</p>
+                            </a>
+                        {% else %}
+                            <p>-</p>
+                        {% endif %}
+                    </td>
+                    <td style="width: 15%">
+                        {% if riff.instrument.name is defined and riff.instrument.name is not null %}
+                            <p>{{ riff.instrument.name }}</p>
+                        {% else %}
+                            <p>-</p>
+                        {% endif %}
+                    </td>
+                    <td class="riff-table-description" style="width: 40%">
+                        {% if riff.decription is defined and riff.decription is not null %}
+                            <p>{{ riff.decription }}</p>
+                        {% else %}
+                            <p>-</p>
+                        {% endif %}
+                    </td>
+                    <td style="width: 10%">
+                        {% if riff.author.username is defined and riff.author.username is not null %}
+                            <p>{{ riff.author.username }}</p>
+                        {% else %}
+                            <p>-</p>
+                        {% endif %}
+                    </td>
+                    <td class="riff-table-details" style="width: 3%">
+                        <div style="display: flex; align-items: baseline;">
+
+                        <a href="/riff/{{ riff.id }}">
+                            <i class="fas fa-info-circle"></i>
+                        </a>
+                        {% if riff.author.username is defined and riff.author.username is not null and app.user is defined and app.user is not null %}
+                            {% if riff.author == app.user  %}
+                                <a href="/riff/delete/{{ riff.id }}" >
+                                    <i class="fas fa-trash-alt" style="color:#FA37A4;"></i>
+                                </a>
+                            {% endif %}
+                        {% endif %}
+                        </div>
+
+                    </td>
+
                 </tr>
             {% endfor %}
         </tbody>
