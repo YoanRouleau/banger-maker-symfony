@@ -58,6 +58,20 @@ class RiffController extends AbstractController
 
 
     }
+
+    /**
+     * @Route("/riff/delete/{id}", name="riff_delete")
+     */
+    public function delete(EntityManagerInterface $entityManager,Request $request,$id): Response
+    {
+
+        $riff = $entityManager->getRepository(Riff::class)->findOneBy(['id'=> $id]);
+        $entityManager->remove($riff);
+        $entityManager->flush();
+        return $this->redirectToRoute('riff');
+
+
+    }
 //    /**
 //     * @Route("/riff/{id}", name="riff_show")
 //     */
