@@ -81,10 +81,22 @@
                         {% endif %}
                     </td>
                     <td class="riff-table-details" style="width: 3%">
+                        <div style="display: flex; align-items: baseline;">
+
                         <a href="/riff/{{ riff.id }}">
                             <i class="fas fa-info-circle"></i>
                         </a>
+                        {% if riff.author.username is defined and riff.author.username is not null and app.user is defined and app.user is not null %}
+                            {% if riff.author == app.user  %}
+                                <a href="/riff/delete/{{ riff.id }}" >
+                                    <i class="fas fa-trash-alt" style="color:#FA37A4;"></i>
+                                </a>
+                            {% endif %}
+                        {% endif %}
+                        </div>
+
                     </td>
+
                 </tr>
             {% endfor %}
         </tbody>

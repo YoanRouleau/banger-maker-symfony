@@ -77,11 +77,15 @@ function replaySong() {
 }
 
 function createToolContainer(container){
+
     const toolcontainer = _("div",container,{id: "toolcontainer"})
-    const buttontempo8 = _("button",toolcontainer,{text:"○",id:"tempo8-button",classes:"buttons"})
-    const buttontempo4 = _("button",toolcontainer,{text:"♪",id:"tempo4-button",classes:"buttons selected"})
-    const buttontempo2 = _("button",toolcontainer,{text:"♫",id:"tempo2-button",classes:"buttons"})
-    const buttontempo1 = _("button",toolcontainer,{text:"♬",id:"tempo1-button",classes:"buttons"})
+    const div1 = _("div",toolcontainer,{classes: "toolcontainer-block"})
+    const div2 = _("div",toolcontainer,{classes: "toolcontainer-block"})
+    const div3 = _("div",toolcontainer,{classes: "toolcontainer-block"})
+    const buttontempo8 = _("button",div1,{text:"○",id:"tempo8-button",classes:"btn-accent outlined"})
+    const buttontempo4 = _("button",div1,{text:"♪",id:"tempo4-button",classes:"btn-accent outlined selected"})
+    const buttontempo2 = _("button",div1,{text:"♫",id:"tempo2-button",classes:"btn-accent outlined"})
+    const buttontempo1 = _("button",div1,{text:"♬",id:"tempo1-button",classes:"btn-accent outlined"})
 
     buttontempo8.addEventListener("click",() => {
         window.toolsize  = 8;
@@ -117,11 +121,11 @@ function createToolContainer(container){
     buttonplayinvisible.addEventListener("click",() => {
         playWithInstrument()
     })
-    const playbutton = _("button",toolcontainer,{text:"Play once",id:"play-button"})
-    const resetbutton = _("button",toolcontainer,{text:"Reset",id:"reset-button"})
+    const playbutton = _("button",div2,{text:"Play once",id:"  ",classes:"btn-accent outlined"})
+    const resetbutton = _("button",div2,{text:"Reset",id:"reset-button",classes:"btn-accent outlined"})
     // const loopbutton = _("button",toolcontainer,{text:"Loop song",id:"play-loop",classes:"off"})
-    _("label",toolcontainer,{text:" Tempo : "})
-    const tempoinput = _("input",toolcontainer,{value:"180",type:"number",id:"quantity",name:"quantity",min:"40",max:"280"})
+    _("label",div3,{text:" Tempo : "})
+    const tempoinput = _("input",div3,{value:"180",type:"number",id:"quantity",name:"quantity",min:"40",max:"280"})
     tempoinput.addEventListener("change",(e) => {
         window.song["tempo"] = tempoinput.value
     })
