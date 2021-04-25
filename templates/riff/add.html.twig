@@ -10,15 +10,19 @@
 
     {% if app.user is defined and app.user is not null  %}
         <link rel="stylesheet" href="/css/riff-form.css">
-        {{ form_start(form) }}
-        <hr>
+        <h1>Créez votre plus gros banger!</h1>
+        {{ form_start(form,{ 'attr' : { 'class': 'riffForm' } }) }}
         {#   Some inputs are hidden but used like custom file #}
-        {{ form_row(form.customsongfile) }}
-        {{ form_row(form.categorie) }}
-        {{ form_row(form.instrument) }}
-        {{ form_row(form.name) }}
-        {{ form_row(form.description) }}
-        <input type="submit" class="btn btn-primary" id="hiddensubmit"value="Send">
+        {{ form_row(form.name, { 'label': 'Le nom de votre meilleur son', 'attr' : { 'class': 'riffInput', 'placeholder': 'ex: Despacito 2' } }) }}
+        <div class="riffDropdowns">
+            {{ form_row(form.categorie, { 'label': 'Catégorie de musique', 'attr' : { 'class': 'riffInput riffSelect' } }) }}
+            {{ form_row(form.instrument, { 'attr' : { 'class': 'riffInput riffSelect' } }) }}
+        </div>
+        <div class="riffInput-hidden">
+            {{ form_row(form.customsongfile, { 'attr' : { 'class': 'riffInput' } }) }}
+        </div>
+        {{ form_row(form.description, { 'attr' : { 'class': 'riffInput', 'placeholder': 'ex: Découvrez Despacito 2, c\'est genre Despacito mais en mieux' } }) }}
+        <input type="submit" class="btn btn-primary" id="hiddensubmit" value="Send">
         {{ form_end(form,  {'render_rest': false}) }}
 
         <script src="/js/banger-maker/package/node_modules/tone/build/Tone.js"></script>
@@ -27,7 +31,7 @@
         </div>
 
 
-        <button id="addbutton"> add </button>
+        <button id="addbutton" class="btn-accent">Créer <i class="fas fa-paper-plane"></i></button>
         <script>
             document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById("addbutton").addEventListener("click",()=>{
