@@ -41,69 +41,63 @@
 
     <section class="content">
             <section class="content_left">
-                <section class="navigation" style="height: 270px;">
+                <section class="navigation">
                     <!-- Main -->
-
-
-
                     <div class="navigation__list">
-
                         <div class="navigation__list__header__title" >
-                           Gang-Band
+                            <img class="navigation__logo" src="../img/gb-logo.png" alt="">
                         </div>
-                        <div class="navigation__list__header" role="button" data-toggle="collapse" href="#main" aria-expanded="true" aria-controls="main">
-                            Account  <i class="fas fa-user"></i>
+                        <div class="navigation__account_section">
+                            <div class="navigation__list__header" role="button" data-toggle="collapse" href="#main" aria-expanded="true" aria-controls="main">
+                                <i class="fas fa-user"></i> Compte
+                            </div>
+
+                            {% if app.user is defined and app.user is not null  %}
+                                <div class="navigation__list__item">
+                                    <img src="../img/user.jpg" alt="Avatar" class="round-img">
+                                    {{ app.user.username }}
+                                </div>
+
+                                <div class="navigation__list__item">
+                                    <a href="/logout">
+                                        <button class="btn-accent" >
+                                            Déconnexion
+                                        </button>
+                                    </a>
+                                </div>
+
+                            {% else %}
+                                <div class="navigation__list__item">
+                                    <a href="/register">
+
+                                        <button class="btn-accent outlined">
+                                            Inscription
+                                        </button>
+                                    </a>
+                                    <a href="/login">
+                                        <button class="btn-accent" >
+                                            Connexion
+                                        </button>
+                                    </a>
+                                </div>
+
+                            {% endif %}
                         </div>
 
-                        {% if app.user is defined and app.user is not null  %}
-                        <div class="navigation__list__item">
-                            <img src="../img/user.jpg" alt="Avatar" class="round-img">
-                            {{ app.user.username }}
-                        </div>
-
-                        <div class="navigation__list__item">
-
-                            <a href="/logout">
-                                <button class="btn-accent" >
-                                    Logout
-                                </button>
-                            </a>
-                        </div>
-
-                        {% else %}
-                        <div class="navigation__list__item">
-                            <a href="/login">
-                                <button class="btn-accent" >
-                                    Sign In
-                                </button>
-                            </a>
-                            <a href="/register">
-
-                                <button class="btn-accent-outlined">
-                                    Register
-                                </button>
-                            </a>
-
-                        </div>
-
-                        {% endif %}
-                        <br>
-
-                        <div class="navigation__list__header" role="button" data-toggle="collapse" href="#main" aria-expanded="true" aria-controls="main">
+                        {#<div class="navigation__list__header" role="button" data-toggle="collapse" href="#main" aria-expanded="true" aria-controls="main">
                             Main <i class='fa fa-angle-down'></i>
-                        </div>
-
+                        </div>#}
 
                         <div class="collapse in" id="main">
 
                             <a href="/" class="navigation__list__item">
                                 <i class="fa fa-home"></i>
-                                <span>Home</span>
+                                <span>Accueil</span>
                             </a>
 
                             <a href="/riff/add" class="navigation__list__item">
                                 <i class="fa fa-plus"></i>
-                                <span>Create</span>
+                                <span>Créer un son</span>
                             </a>
 
                             <a href="/instrument" class="navigation__list__item">
@@ -113,7 +107,7 @@
 
                             <a href="/categorie" class="navigation__list__item">
                                 <i class="fas fa-bookmark"></i>
-                                <span>Categories</span>
+                                <span>Catégories</span>
                             </a>
 
                         </div>

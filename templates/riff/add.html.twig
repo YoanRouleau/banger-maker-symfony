@@ -46,23 +46,14 @@
 
 
     {% else %}
-        <div>
-            Il faut s'enregistrer pour se login:
-            <div class="navigation__list__item">
-                <a href="/login">
-                    <button class="btn-accent" >
-                        Sign In
-                    </button>
-                </a>
-                <a href="/register">
 
-                    <button class="btn-accent-outlined">
-                        Register
-                    </button>
-                </a>
-
-            </div>
+        <div class="playground-oops">
+            <h1>Oops!</h1>
+            <p>Vous ne pouvez pas composer sans être enregistré.</p>
+            <p>Cliquez <a href="/login">ici</a> pour vous connecter ou <a href="/register">là</a> pour vous inscrire.</p>
         </div>
+
+
 
 
     {% endif %}
