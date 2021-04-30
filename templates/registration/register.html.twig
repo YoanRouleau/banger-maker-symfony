@@ -3,19 +3,89 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
+<div style="background-image: url(img/loginBackground.jpg); background-size: cover; background-repeat: no-repeat; height: 100%;">
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
+    <div class="login-container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Register</h3>
+                    <div class="d-flex justify-content-end social_icon">
+                        <span><i class="fab fa-facebook-square"></i></span>
+                        <span><i class="fab fa-google-plus-square"></i></span>
+                        <span><i class="fab fa-twitter-square"></i></span>
+                    </div>
+                </div>
+            <div class="card-body">
 
     {{ form_start(registrationForm) }}
+    <div style="color: white; font-family: 'Nothing You Could Do'; font-size: 20px">
         {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
+        {{ form_row(registrationForm.plainPassword, { label: 'Password'}) }}
+        {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+        {{ form_end(registrationForm) }}
+        <button type="submit" class="btn-lg float-right btn-accent">Register</button>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+    </div>
 {% endblock %}
+
+
+
+
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+<div style="background-image: url(img/loginBackground.jpg); background-size: cover; background-repeat: no-repeat; height: 100%;">
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    <div class="login-container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Register</h3>
+                    <div class="d-flex justify-content-end social_icon">
+                        <span><i class="fab fa-facebook-square"></i></span>
+                        <span><i class="fab fa-google-plus-square"></i></span>
+                        <span><i class="fab fa-twitter-square"></i></span>
+                    </div>
+                </div>
+                <div class="card-body">
+                {{ form_start(registrationForm) }}
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <label for="inputUsername"></label>
+                        <input type="text" placeholder="username" name="form[username]" id="inputUsername" class="form-control" required autofocus>
+                    </div>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <label for="inputPassword"></label>
+                        <input value="{{ form_row(registrationForm.plainPassword, { label: 'Password'}) }}" name="form[password]" type="password" placeholder="password" name="password" id="inputPassword" class="form-control" required>
+                    </div>
+                        {{ form_row(registrationForm.agreeTerms) }}
+                            <div class="form-group">
+                                <input type="submit" value="Register" class=" btn-lg float-right btn-accent">
+                            </div>
+                        {{ form_end(registrationForm) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %} #}

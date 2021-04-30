@@ -8,12 +8,13 @@ h1{
 }
 
 a{
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .content{
     display: flex;
     flex-flow: row wrap;
+    overflow: visible !important;
 }
 .content_middle{
     width:85%;
@@ -238,7 +239,7 @@ tbody tr:hover .riff-table-play{
     border-radius: 28px;
     font-family: "Roboto", sans-serif;
     outline: none;
-
+    
     font-weight: bold;
     color: #ffffff;
     font-size: 13px;
@@ -341,3 +342,104 @@ tbody tr:hover .riff-table-play{
     color: #FA37A4 !important;
     text-decoration: underline !important;
 }
+
+
+.login-container{
+    height: 100%;
+    align-content: center;
+    }
+    
+    .card{
+    height: 460px;
+    margin-top: 200px;
+    margin-bottom: auto;
+    width: 400px;
+    background-color: rgba(0,0,0,0.5) !important;
+    }
+    
+    .social_icon span{
+    font-size: 60px;
+    margin-left: 10px;
+    color: #FA37A4;
+    }
+    
+    .social_icon span:hover{
+    color: white;
+    cursor: pointer;
+    }
+    
+    .card-header h3{
+    color: white;
+    }
+    
+    .social_icon{
+    position: absolute;
+    right: 20px;
+    top: -45px;
+    }
+    
+    .input-group-prepend span{
+    width: 50px;
+    background-color: #FA37A4;
+    color: black;
+    border:0 !important;
+    }
+    
+    input:focus{
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+    
+    }
+    
+    .remember{
+    color: white;
+    }
+    
+    .remember input
+    {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+    }
+    
+    .login_btn{
+    color: black;
+    background-color: #FFC312;
+    width: 100px;
+    }
+    
+    .login_btn:hover{
+    color: black;
+    background-color: white;
+    }
+    
+    .links{
+    color: white;
+    }
+    
+    .links a{
+    margin-left: 4px;
+    }
+
+    .card .card-header h3 {
+        font-family: 'Nothing You Could Do', cursive;
+    }
+
+    .card-register{
+        height: 520px;
+        margin-top: 200px;
+        margin-bottom: auto;
+        width: 400px;
+        background-color: rgba(0,0,0,0.5) !important;
+        }
+
+    .card-register .card-header h3 {
+        font-family: 'Nothing You Could Do', cursive;
+    }
+
+    input {
+        font-family: 'Lato', sans-serif !important; 
+    }
+        
+    
