@@ -11,8 +11,15 @@
     <script type="module" src="/js/banger-maker/widget2.js"></script>
     <div id="playgroundcontainer">
     </div>
+    {% if riffs is empty %}
+        <div class="playground-oops">
+            <h1>Pas grand chose ici...</h1>
+            <p>Cette catégorie de possède pas encore de musiques.</p>
+            <p>Cliquez <a href="/riff/add">ici</a> pour être la première personne à en créer une !</p>
+        </div>
+    {% else %}
     <div class="example-wrapper">
-        <div class="riff-head"  style="background: linear-gradient(0deg, rgba(24,24,24,1) 0%, rgba(0,0,0,0) 100%), url('{{ categorie.picture }}')">
+        <div class="riff-head"  style="background: linear-gradient(0deg, rgba(22,0,22,1) 0%, rgba(0,0,0,0) 100%), url('{{ categorie.picture }}')">
             <img class="riff-image-tiles" src={{ categorie.picture }} alt="">
             <div class="riff-head-content">
                 <h1>Les musiques de la catégorie {{ categorie.name }} !</h1>
@@ -88,6 +95,7 @@
             </tbody>
         </table>
     </div>
+    {% endif %}
     <script>
         document.addEventListener("DOMContentLoaded",()=>{
             let playbuttons = document.querySelectorAll('.playsong')

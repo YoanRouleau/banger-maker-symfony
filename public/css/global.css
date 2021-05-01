@@ -30,6 +30,7 @@ a{
 
 .navigation{
     height: 100%;
+    position: fixed;
     color: #aaaaaa;
     padding-left:15px;
    /* background: linear-gradient(270deg, rgba(23,0,23,1) 0%, rgba(0,0,0,0) 25%);*/
@@ -60,7 +61,7 @@ a{
 }
 
 .navigation__list__header{
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     font-size: 0.85em;
     padding-bottom: 7px;
 }
@@ -96,8 +97,8 @@ path{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: flex-start;
-    height: 200px;
+    align-items: center;
+    height: fit-content;
     margin: 0;
     padding: 40px 50px;
     background: linear-gradient(0deg, rgba(22,0,22,1) 0%, rgba(0,0,0,0) 100%), url("../img/riff-bg-2.jpg");
@@ -162,7 +163,7 @@ path{
     font-family: 'Nothing You Could Do', cursive;
     text-align: left;
     text-transform: uppercase;
-    font-weight: lighter;
+    font-weight: bold;
     letter-spacing: 4px;
     color: #cbcbcb;
     font-size: 0.7vw;
@@ -180,6 +181,7 @@ path{
 .riff-table tbody td p{
     overflow: hidden;
     display: -webkit-box;
+    margin-bottom: 0;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 }
