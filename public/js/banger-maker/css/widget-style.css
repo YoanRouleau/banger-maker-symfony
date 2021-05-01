@@ -39,6 +39,7 @@ button{
 .timeItem{
     background: #151d32;
     width:9px;
+    margin-bottom: unset;
     height:14px;
 }
 .noire{

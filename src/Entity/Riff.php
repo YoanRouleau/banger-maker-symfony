@@ -173,4 +173,40 @@ class Riff
     {
         return $this->name;
     }
+    public function getAverageNote(){
+        $notes = $this->getNotes();
+        $somme = 0;
+        for ($i = 1; $i <= count($notes); $i++){
+            $somme += $notes[$i-1]->getNote();
+        }
+        if (count($notes)!=0) {
+            return $somme / count($notes);
+        }
+        else
+            return 0;
+
+    }
+
+    public function getAverageNoteScaled(){
+        $note = $this->getAverageNote();
+        switch (true) {
+            case (0<$note and $note <20 ) :
+               return 1;
+                break;
+            case (20<=$note and $note <40 ):
+                return 2;
+                break;
+            case (40<=$note and $note <60 ):
+                return 3;
+                break;
+            case (60<=$note and $note <80 ):
+                return 4;
+                break;
+            case (80<=$note and $note <=100 ):
+                return 5;
+                break;
+        }
+        return 0;
+
+    }
 }
