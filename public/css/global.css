@@ -506,6 +506,7 @@ tbody tr:hover .riff-table-play{
 .riff-avis-container .riff-avis .avis-note i{
     margin: 0;
     font-size: 0.8em;
+    width: unset;
 }
 .riff-avis-container .riff-avis:nth-child(odd){
     background-color: #2b002b;
