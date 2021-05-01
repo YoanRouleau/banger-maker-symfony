@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Categorie;
 use App\Entity\Comment;
 use App\Entity\Instrument;
+use App\Entity\Note;
 use App\Entity\Post;
 use App\Entity\User;
 use App\Entity\Riff;
@@ -15,6 +16,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
@@ -107,8 +109,16 @@ class RiffController extends AbstractController
     public function show(EntityManagerInterface $entityManager, $id): Response
     {
         $riff = $entityManager->getRepository(Riff::class)->findOneBy( ['id'=> $id] );
+        $notes = $entityManager->getRepository(Note::class)->findBy( ['riff'=> $id] );
+        $form = $this->createFormBuilder()->setAction($this
+            ->generateUrl('note_new'))
+            ->add('commentaire', TextType::class)
+            ->add('note', RangeType::class)
+            ->add('riff',)
+            ->getForm();
+        //dd($commentaires);
         return $this->render('riff/show.html.twig', [
-            'controller_name' => 'RiffController',"riff"=>$riff
+            'controller_name' => 'RiffController',"riff"=>$riff,"form"=>$form->createView(),"notes"=>$notes
         ]);
     }
 
