@@ -325,6 +325,12 @@ tbody tr:hover .riff-table-play{
     transition: all 0.3s ease-in-out;
 }
 
+.fa-star{
+    margin-left: 1px;
+    margin-right: 1px;
+    width: 15%;
+
+}
 
 .playground-oops{
     height: 100%;
