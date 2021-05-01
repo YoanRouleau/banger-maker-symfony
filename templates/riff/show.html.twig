@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RiffController!{% endblock %}
+{% block title %}{{ riff.name }} - {{ riff.author.username }}{% endblock %}
 
 {% block body %}
 <style>
@@ -8,27 +8,50 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
     <script src="/js/banger-maker/package/node_modules/tone/build/Tone.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
     <script type="module" src="/js/banger-maker/widget2.js"></script>
     <div id="playgroundcontainer">
     </div>
-    {% if app.user is defined and app.user is not null  %}
-        {{ form_start(form,{ 'attr' : { 'class': 'riffForm' } }) }}
-        {{ form_row(form.note, { 'attr' : { 'class': 'riffInput riffSelect' } }) }}
-        {{ form_row(form.commentaire, { 'attr' : { 'class': 'riffInput riffSelect' } }) }}
+    <div class="riff-desc-head">
+        <h1>{{ riff.name }}</h1>
+        <p>crée par {{ riff.author.username }}</p>
+        <div class="button-container">
+            <button class="playsong btn-accent outlined" value="{{ riff.customsongfile }}!{{ riff.getInstrument.Id }}"><i class="fas fa-play"></i>Ecouter</button>
+            <p class="btn-accent avisOpen"><i class="fas fa-stream"></i> Laisser un avis</p>
+        </div>
+    </div>
+    <div class="riff-desc-body">
+        {% if app.user is defined and app.user is not null  %}
+            {{ form_start(form,{ 'attr' : { 'class': 'riffFormAvis' } }) }}
+            <span class="closeForm"><i class="fas fa-times"></i></span>
+            {{ form_row(form.note, { 'attr' : { 'class': 'riffInput riffSelect' } }) }}
+            {{ form_row(form.commentaire, { 'attr' : { 'class': 'riffInput riffSelect' } }) }}
 
-        <input type="submit" id="hiddensubmit" value="Send">
+            <input type="submit" id="hiddensubmit" class="btn-accent" value="Envoyer">
 
 
-        {{ form_end(form,  {'render_rest': false}) }}
-    {% else %}
-        pour laisser une note il faut être connecté
-    {% endif %}
+            {{ form_end(form,  {'render_rest': false}) }}
+        {% else %}
+            <p>Pour laisser une note il faut être connecté</p>
+        {% endif %}
 
-
-
-
-    {{ riff.name }}
-        <button class="playsong" value="{{ riff.customsongfile }}!{{ riff.getInstrument.Id }}">Play</button>
+        <div class="riff-avis-container">
+            {% for note in notes %}
+                <div class="riff-avis">
+                    <p class="avis-name">{{ note.author}}</p>
+                    <div class="avis-note">
+                        {#{{ note.note }}#}
+                        <i class='fa fa-star fa-fw' {% if note.note > 20 %}style="color:white"{% else %}style="color:grey"  {% endif %}></i>
+                        <i class='fa fa-star fa-fw' {% if note.note > 40 %}style="color:white"{% else %}style="color:grey"  {% endif %}></i>
+                        <i class='fa fa-star fa-fw' {% if note.note > 50 %}style="color:white"{% else %}style="color:grey"  {% endif %}></i>
+                        <i class='fa fa-star fa-fw' {% if note.note > 60 %}style="color:white"{% else %}style="color:grey"  {% endif %}></i>
+                        <i class='fa fa-star fa-fw' {% if note.note > 80 %}style="color:white"{% else %}style="color:grey"  {% endif %}></i>
+                    </div>
+                    <p class="avis-comment">{{ note.commentaire }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
     <script>
         document.addEventListener("DOMContentLoaded",()=>{
             let playbuttons = document.querySelectorAll('.playsong')
@@ -43,12 +66,14 @@
 
                 })
             })
+
+            $('.avisOpen').on('click', function(){
+                $('.riffFormAvis').addClass('open');
+            })
+            $('.closeForm').on('click', function(){
+                $('.riffFormAvis').hasClass('open')?$('.riffFormAvis').removeClass('open'):'';
+            })
         })
     </script>
 
-    {% for note in notes %}
-        <div>{{ note.author}}</div>
-        <div>{{ note.commentaire}}</div>
-        <div>{{ note.note}}</div>
-    {% endfor %}
 {% endblock %}

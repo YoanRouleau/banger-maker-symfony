@@ -444,5 +444,64 @@ tbody tr:hover .riff-table-play{
     input {
         font-family: 'Lato', sans-serif !important; 
     }
-        
+
+
+
+.riff-desc-body{
+    position: relative;
+    overflow-x: hidden;
+    min-height: 70vh;
+}
+
+.riffFormAvis{
+    padding: 50px;
+    position: absolute;
+    right: 0;
+    transform: translateX(100vw);
+    background-color: white;
+    border-radius: 28px 0 0 28px;
+    transition: all 0.5s ease-in-out;
+}
+.riffFormAvis.open{
+    transform: translateX(0);
+    transition: all 0.5s ease-in-out;
+}
+.riffFormAvis .closeForm{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+
+.riff-desc-head{
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+.riff-desc-head .button-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.riff-avis-container .riff-avis{
+    color: white;
+    padding: 30px;
+}
+.riff-avis-container .riff-avis > *{
+    margin-bottom: 0px;
+}
+
+.riff-avis-container .riff-avis .avis-note{
+    margin-bottom: 25px;
+}
+.riff-avis-container .riff-avis .avis-note i{
+    margin: 0;
+    font-size: 0.8em;
+}
+.riff-avis-container .riff-avis:nth-child(odd){
+    background-color: #2b002b;
+}
     

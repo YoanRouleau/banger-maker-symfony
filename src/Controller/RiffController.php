@@ -112,9 +112,8 @@ class RiffController extends AbstractController
         $notes = $entityManager->getRepository(Note::class)->findBy( ['riff'=> $id] );
         $form = $this->createFormBuilder()->setAction($this
             ->generateUrl('note_new'))
-            ->add('commentaire', TextType::class)
+            ->add('commentaire', TextareaType::class)
             ->add('note', RangeType::class)
-            ->add('riff',)
             ->getForm();
         //dd($commentaires);
         return $this->render('riff/show.html.twig', [
