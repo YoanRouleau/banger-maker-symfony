@@ -12,7 +12,7 @@
 
         {% if app.user %}
             <div class="mb-3">
-                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
             </div>
         {% endif %}
 
@@ -20,7 +20,7 @@
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
-                    <h3>Sign In</h3>
+                    <h3>Connexion</h3>
                     <div class="d-flex justify-content-end social_icon">
                         <span><i class="fab fa-facebook-square"></i></span>
                         <span><i class="fab fa-google-plus-square"></i></span>
@@ -34,7 +34,7 @@
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
                             <label for="inputUsername"></label>
-                                <input type="text" placeholder="username" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
+                                <input type="text" placeholder="Nom d'utilisateur" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
                             
                         </div>
                         <div class="input-group form-group">
@@ -42,14 +42,14 @@
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
                             <label for="inputPassword"></label>
-                                <input type="password" placeholder="password" name="password" id="inputPassword" class="form-control" required>
+                                <input type="password" placeholder="Mot de passe" name="password" id="inputPassword" class="form-control" required>
 
                         </div>
                         <div class="row align-items-center remember mt-5">
-                            <input type="checkbox">Remember Me
+                            <input type="checkbox">Se souvenir de moi
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Login" class=" btn-lg float-right btn-accent mt-5">
+                            <input type="submit" value="Connexion" class=" btn-lg float-right btn-accent mt-5">
                         </div>
                     </form>
                 </div>
