@@ -17,7 +17,9 @@
         <p>crée par {{ riff.author.username }}</p>
         <div class="button-container">
             <button class="playsong btn-accent outlined" value="{{ riff.customsongfile }}!{{ riff.getInstrument.Id }}"><i class="fas fa-play"></i>Ecouter</button>
+            {% if app.user is defined and app.user is not null  %}
             <p class="btn-accent avisOpen"><i class="fas fa-stream"></i> Laisser un avis</p>
+            {% endif %}
         </div>
     </div>
     <div class="riff-desc-body">
@@ -32,10 +34,11 @@
 
             {{ form_end(form,  {'render_rest': false}) }}
         {% else %}
-            <p>Pour laisser une note il faut être connecté</p>
+            <p class="riff-avis-container-warning">Pour laisser une note il faut être connecté</p>
         {% endif %}
 
         <div class="riff-avis-container">
+            {% if notes is not empty %}
             {% for note in notes %}
                 <div class="riff-avis">
                     <p class="avis-name">{{ note.author}}</p>
@@ -50,6 +53,9 @@
                     <p class="avis-comment">{{ note.commentaire }}</p>
                 </div>
             {% endfor %}
+            {% else %}
+                <p class="riff-avis-container-warning">Ce banger n'a pas encore d'avis.</p>
+            {% endif %}
         </div>
     </div>
     <script>

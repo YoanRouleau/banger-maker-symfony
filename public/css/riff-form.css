@@ -46,7 +46,7 @@ h1{
     color: white;
     border: none;
     border-radius: 5px;
-    height: 2em;
+    /*height: 2em;*/
     width: 200px;
 }
 .riffInput:focus{
