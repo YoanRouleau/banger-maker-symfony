@@ -43,7 +43,7 @@ class NoteController extends AbstractController
             $this->getDoctrine()->getManager()->persist($note);
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('riff');
+            return $this->redirectToRoute('riff_show',["id"=>$riffid]);
         }
         #return $this->redirectToRoute('riff',['error' => "Votre commentaire est giga chelou du coup ça marche pas"]);
 

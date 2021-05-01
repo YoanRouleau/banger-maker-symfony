@@ -114,7 +114,6 @@ class RiffController extends AbstractController
             ->generateUrl('note_new'))
             ->add('commentaire', TextType::class)
             ->add('note', RangeType::class)
-            ->add('riff',)
             ->getForm();
         //dd($commentaires);
         return $this->render('riff/show.html.twig', [
