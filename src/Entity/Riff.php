@@ -30,7 +30,7 @@ class Riff
     private $decription;
 
     /**
-     * @ORM\Column(type="string", length=65532)
+     * @ORM\Column(type="text")
      */
     private $customsongfile;
 
